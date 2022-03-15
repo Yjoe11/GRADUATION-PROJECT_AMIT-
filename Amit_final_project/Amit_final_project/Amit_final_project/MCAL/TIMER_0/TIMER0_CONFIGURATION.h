@@ -1,0 +1,23 @@
+/*
+ * TIMER0_CONFIGURATION.h
+ *
+ * Created: 2/26/2022 8:03:09 PM
+ *  Author: alkods
+ */ 
+
+
+#ifndef TIMER0_CONFIGURATION_H_
+#define TIMER0_CONFIGURATION_H_
+
+
+
+
+
+
+// MODE OF TIMER ZERO
+#define TIMER_0_MODE				NORMAL_MODE														// SELECTION OF TIMER MODE
+
+#define TIMER_0_INT_FLAG			ENABLE
+
+
+#endif /* TIMER0_CONFIGURATION_H_ */

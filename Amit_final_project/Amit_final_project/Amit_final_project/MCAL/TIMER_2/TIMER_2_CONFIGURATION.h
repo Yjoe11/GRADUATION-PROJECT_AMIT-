@@ -1,0 +1,24 @@
+/*
+ * TIMER_2_CONFIGURATION.h
+ *
+ * Created: 3/2/2022 5:32:36 PM
+ *  Author: alkods
+ */ 
+
+
+#ifndef TIMER_2_CONFIGURATION_H_
+#define TIMER_2_CONFIGURATION_H_
+
+
+
+
+
+// MODE OF TIMER TWO
+#define TIMER_2_MODE				NORMAL_MODE										// SELECTION OF TIMER MODE
+
+#define TIMER_2_INT_FLAG			ENABLE
+
+
+
+
+#endif /* TIMER_2_CONFIGURATION_H_ */

@@ -1,0 +1,2419 @@
+
+Amit_final_project.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000efc  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000042  00800060  00000efc  00000f90  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000029  008000a2  008000a2  00000fd2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000fd2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001004  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000348  00000000  00000000  00001040  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002db6  00000000  00000000  00001388  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000fc5  00000000  00000000  0000413e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001be9  00000000  00000000  00005103  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000006f4  00000000  00000000  00006cec  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000b5b  00000000  00000000  000073e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000013cd  00000000  00000000  00007f3b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000002b8  00000000  00000000  00009308  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3e 06 	jmp	0xc7c	; 0xc7c <__vector_1>
+   8:	0c 94 6c 06 	jmp	0xcd8	; 0xcd8 <__vector_2>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 2b 07 	jmp	0xe56	; 0xe56 <__vector_5>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 b4 06 	jmp	0xd68	; 0xd68 <__vector_11>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ec ef       	ldi	r30, 0xFC	; 252
+  68:	fe e0       	ldi	r31, 0x0E	; 14
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 3a       	cpi	r26, 0xA2	; 162
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a2 ea       	ldi	r26, 0xA2	; 162
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ab 3c       	cpi	r26, 0xCB	; 203
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 02 05 	call	0xa04	; 0xa04 <main>
+  8a:	0c 94 7c 07 	jmp	0xef8	; 0xef8 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <VEHICLE_INIT>:
+						   and sent the orders to ultrasonic drivers.
+*/
+
+void VEHICLE_INIT (void)
+{
+	LCD_Init();
+  92:	0e 94 52 03 	call	0x6a4	; 0x6a4 <LCD_Init>
+	LCD_Clear();
+  96:	0e 94 06 04 	call	0x80c	; 0x80c <LCD_Clear>
+	DC_MOTOR_INIT();
+  9a:	0e 94 46 02 	call	0x48c	; 0x48c <DC_MOTOR_INIT>
+	SERVO_MOTOR_INT();
+  9e:	0e 94 0d 04 	call	0x81a	; 0x81a <SERVO_MOTOR_INT>
+	ULTRASONIC_INIT();
+  a2:	0e 94 58 04 	call	0x8b0	; 0x8b0 <ULTRASONIC_INIT>
+	ULTRASONIC_02_INIT();
+  a6:	0e 94 cc 04 	call	0x998	; 0x998 <ULTRASONIC_02_INIT>
+	ULTRASONIC_ACTION_SET_CALLBACK(OBSTACLE_DETECTOR);
+  aa:	88 ee       	ldi	r24, 0xE8	; 232
+  ac:	90 e0       	ldi	r25, 0x00	; 0
+  ae:	0e 94 89 04 	call	0x912	; 0x912 <ULTRASONIC_ACTION_SET_CALLBACK>
+	ULTRASONIC_02_ACTION_SET_CALLBACK(BackWard_moving);
+  b2:	87 e7       	ldi	r24, 0x77	; 119
+  b4:	90 e0       	ldi	r25, 0x00	; 0
+  b6:	0e 94 fd 04 	call	0x9fa	; 0x9fa <ULTRASONIC_02_ACTION_SET_CALLBACK>
+  ba:	08 95       	ret
+
+000000bc <MOVE_FORWARD>:
+	Function Description : ORDER DC_MOTORS TO MOVE FORWARD.
+*/
+
+void MOVE_FORWARD (void)
+{
+	DC_MOTOR_DIRECTION(MOTOR_1, CLOCK_WISE);
+  bc:	60 e0       	ldi	r22, 0x00	; 0
+  be:	81 e0       	ldi	r24, 0x01	; 1
+  c0:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_2, CLOCK_WISE);
+  c4:	60 e0       	ldi	r22, 0x00	; 0
+  c6:	82 e0       	ldi	r24, 0x02	; 2
+  c8:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_3, CLOCK_WISE);
+  cc:	60 e0       	ldi	r22, 0x00	; 0
+  ce:	83 e0       	ldi	r24, 0x03	; 3
+  d0:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_4, CLOCK_WISE);
+  d4:	60 e0       	ldi	r22, 0x00	; 0
+  d6:	84 e0       	ldi	r24, 0x04	; 4
+  d8:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	LCD_Clear();
+  dc:	0e 94 06 04 	call	0x80c	; 0x80c <LCD_Clear>
+	LCD_WriteString("move forward");
+  e0:	80 e6       	ldi	r24, 0x60	; 96
+  e2:	90 e0       	ldi	r25, 0x00	; 0
+  e4:	0e 94 db 03 	call	0x7b6	; 0x7b6 <LCD_WriteString>
+	BackWard_move_active = 0 ;
+  e8:	10 92 a3 00 	sts	0x00A3, r1	; 0x8000a3 <BackWard_move_active>
+  ec:	08 95       	ret
+
+000000ee <BackWard_moving>:
+						   and if the obsacle detected about 20 cm the direction of moving will be reversed.
+*/
+
+void BackWard_moving(uint32 Distance)
+{
+	if (BackWard_move_active)
+  ee:	20 91 a3 00 	lds	r18, 0x00A3	; 0x8000a3 <BackWard_move_active>
+  f2:	22 23       	and	r18, r18
+  f4:	39 f0       	breq	.+14     	; 0x104 <BackWard_moving+0x16>
+	{
+		if (Distance < 20)
+  f6:	64 31       	cpi	r22, 0x14	; 20
+  f8:	71 05       	cpc	r23, r1
+  fa:	81 05       	cpc	r24, r1
+  fc:	91 05       	cpc	r25, r1
+  fe:	10 f4       	brcc	.+4      	; 0x104 <BackWard_moving+0x16>
+		{
+			MOVE_FORWARD();
+ 100:	0e 94 5e 00 	call	0xbc	; 0xbc <MOVE_FORWARD>
+ 104:	08 95       	ret
+
+00000106 <VEHICLE_STOP>:
+	Function Description : ORDER DC_MOTORS TO STOP.
+*/
+
+void VEHICLE_STOP (void)
+{
+	DC_MOTOR_STOP();
+ 106:	0e 94 e2 02 	call	0x5c4	; 0x5c4 <DC_MOTOR_STOP>
+ 10a:	08 95       	ret
+
+0000010c <MOVE_BACKWARD>:
+	Function Description : ORDER DC_MOTORS TO MOVE BACKWARD.
+*/
+
+void MOVE_BACKWARD (void)
+{
+	DC_MOTOR_DIRECTION(MOTOR_1, ANTi_CLOCK_WISE);
+ 10c:	61 e0       	ldi	r22, 0x01	; 1
+ 10e:	81 e0       	ldi	r24, 0x01	; 1
+ 110:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_2, ANTi_CLOCK_WISE);
+ 114:	61 e0       	ldi	r22, 0x01	; 1
+ 116:	82 e0       	ldi	r24, 0x02	; 2
+ 118:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_3, ANTi_CLOCK_WISE);
+ 11c:	61 e0       	ldi	r22, 0x01	; 1
+ 11e:	83 e0       	ldi	r24, 0x03	; 3
+ 120:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_4, ANTi_CLOCK_WISE);
+ 124:	61 e0       	ldi	r22, 0x01	; 1
+ 126:	84 e0       	ldi	r24, 0x04	; 4
+ 128:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	LCD_Clear();
+ 12c:	0e 94 06 04 	call	0x80c	; 0x80c <LCD_Clear>
+	LCD_WriteString("move backward");
+ 130:	8d e6       	ldi	r24, 0x6D	; 109
+ 132:	90 e0       	ldi	r25, 0x00	; 0
+ 134:	0e 94 db 03 	call	0x7b6	; 0x7b6 <LCD_WriteString>
+	BackWard_move_active = 1;
+ 138:	81 e0       	ldi	r24, 0x01	; 1
+ 13a:	80 93 a3 00 	sts	0x00A3, r24	; 0x8000a3 <BackWard_move_active>
+ 13e:	08 95       	ret
+
+00000140 <TURN_LEFT>:
+	Function Description : ORDER DC_MOTORS TO TURN THE VEHICAL LEFT.
+*/
+
+void TURN_LEFT (void)
+{
+	BackWard_move_active = 0 ;
+ 140:	10 92 a3 00 	sts	0x00A3, r1	; 0x8000a3 <BackWard_move_active>
+	DC_MOTOR_DIRECTION(MOTOR_1, ANTi_CLOCK_WISE);
+ 144:	61 e0       	ldi	r22, 0x01	; 1
+ 146:	81 e0       	ldi	r24, 0x01	; 1
+ 148:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_2, ANTi_CLOCK_WISE);
+ 14c:	61 e0       	ldi	r22, 0x01	; 1
+ 14e:	82 e0       	ldi	r24, 0x02	; 2
+ 150:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_3, CLOCK_WISE);
+ 154:	60 e0       	ldi	r22, 0x00	; 0
+ 156:	83 e0       	ldi	r24, 0x03	; 3
+ 158:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_4, CLOCK_WISE);
+ 15c:	60 e0       	ldi	r22, 0x00	; 0
+ 15e:	84 e0       	ldi	r24, 0x04	; 4
+ 160:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	LCD_Clear();
+ 164:	0e 94 06 04 	call	0x80c	; 0x80c <LCD_Clear>
+	LCD_WriteString("move LEFT");
+ 168:	8b e7       	ldi	r24, 0x7B	; 123
+ 16a:	90 e0       	ldi	r25, 0x00	; 0
+ 16c:	0e 94 db 03 	call	0x7b6	; 0x7b6 <LCD_WriteString>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 170:	2f ef       	ldi	r18, 0xFF	; 255
+ 172:	85 ea       	ldi	r24, 0xA5	; 165
+ 174:	9e e0       	ldi	r25, 0x0E	; 14
+ 176:	21 50       	subi	r18, 0x01	; 1
+ 178:	80 40       	sbci	r24, 0x00	; 0
+ 17a:	90 40       	sbci	r25, 0x00	; 0
+ 17c:	e1 f7       	brne	.-8      	; 0x176 <TURN_LEFT+0x36>
+ 17e:	00 c0       	rjmp	.+0      	; 0x180 <TURN_LEFT+0x40>
+ 180:	00 00       	nop
+	_delay_ms(300);
+	MOVE_FORWARD();
+ 182:	0e 94 5e 00 	call	0xbc	; 0xbc <MOVE_FORWARD>
+ 186:	08 95       	ret
+
+00000188 <TURN_RIGHT>:
+	Function Description : ORDER DC_MOTORS TO TURN THE VEHICAL RIGHT.
+*/
+
+void TURN_RIGHT (void)
+{
+	BackWard_move_active = 0 ;
+ 188:	10 92 a3 00 	sts	0x00A3, r1	; 0x8000a3 <BackWard_move_active>
+	DC_MOTOR_DIRECTION(MOTOR_1, CLOCK_WISE);
+ 18c:	60 e0       	ldi	r22, 0x00	; 0
+ 18e:	81 e0       	ldi	r24, 0x01	; 1
+ 190:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_2, CLOCK_WISE);
+ 194:	60 e0       	ldi	r22, 0x00	; 0
+ 196:	82 e0       	ldi	r24, 0x02	; 2
+ 198:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_3, ANTi_CLOCK_WISE);
+ 19c:	61 e0       	ldi	r22, 0x01	; 1
+ 19e:	83 e0       	ldi	r24, 0x03	; 3
+ 1a0:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	DC_MOTOR_DIRECTION(MOTOR_4, ANTi_CLOCK_WISE);
+ 1a4:	61 e0       	ldi	r22, 0x01	; 1
+ 1a6:	84 e0       	ldi	r24, 0x04	; 4
+ 1a8:	0e 94 6f 02 	call	0x4de	; 0x4de <DC_MOTOR_DIRECTION>
+	LCD_Clear();
+ 1ac:	0e 94 06 04 	call	0x80c	; 0x80c <LCD_Clear>
+	LCD_WriteString("move RIGHT");
+ 1b0:	85 e8       	ldi	r24, 0x85	; 133
+ 1b2:	90 e0       	ldi	r25, 0x00	; 0
+ 1b4:	0e 94 db 03 	call	0x7b6	; 0x7b6 <LCD_WriteString>
+ 1b8:	2f ef       	ldi	r18, 0xFF	; 255
+ 1ba:	85 ea       	ldi	r24, 0xA5	; 165
+ 1bc:	9e e0       	ldi	r25, 0x0E	; 14
+ 1be:	21 50       	subi	r18, 0x01	; 1
+ 1c0:	80 40       	sbci	r24, 0x00	; 0
+ 1c2:	90 40       	sbci	r25, 0x00	; 0
+ 1c4:	e1 f7       	brne	.-8      	; 0x1be <TURN_RIGHT+0x36>
+ 1c6:	00 c0       	rjmp	.+0      	; 0x1c8 <TURN_RIGHT+0x40>
+ 1c8:	00 00       	nop
+	_delay_ms(300);
+	MOVE_FORWARD();
+ 1ca:	0e 94 5e 00 	call	0xbc	; 0xbc <MOVE_FORWARD>
+ 1ce:	08 95       	ret
+
+000001d0 <OBSTACLE_DETECTOR>:
+						   from each degree and if the distance of total degree is smaller than 100 cm 
+						   the vehcle will move backward until their an avilabel space around the car and turn the car to the suitable direction
+*/
+
+void OBSTACLE_DETECTOR (uint32 Distance)
+{
+ 1d0:	cf 92       	push	r12
+ 1d2:	df 92       	push	r13
+ 1d4:	ef 92       	push	r14
+ 1d6:	ff 92       	push	r15
+ 1d8:	6b 01       	movw	r12, r22
+ 1da:	7c 01       	movw	r14, r24
+	if (!Obstacle_Detected)
+ 1dc:	80 91 a4 00 	lds	r24, 0x00A4	; 0x8000a4 <Obstacle_Detected>
+ 1e0:	81 11       	cpse	r24, r1
+ 1e2:	34 c0       	rjmp	.+104    	; 0x24c <OBSTACLE_DETECTOR+0x7c>
+	{	if (Distance > 20)
+ 1e4:	25 e1       	ldi	r18, 0x15	; 21
+ 1e6:	c2 16       	cp	r12, r18
+ 1e8:	d1 04       	cpc	r13, r1
+ 1ea:	e1 04       	cpc	r14, r1
+ 1ec:	f1 04       	cpc	r15, r1
+ 1ee:	18 f0       	brcs	.+6      	; 0x1f6 <OBSTACLE_DETECTOR+0x26>
+		{
+			MOVE_FORWARD();
+ 1f0:	0e 94 5e 00 	call	0xbc	; 0xbc <MOVE_FORWARD>
+ 1f4:	2b c0       	rjmp	.+86     	; 0x24c <OBSTACLE_DETECTOR+0x7c>
+		}
+		else if (Distance <= 20)
+ 1f6:	85 e1       	ldi	r24, 0x15	; 21
+ 1f8:	c8 16       	cp	r12, r24
+ 1fa:	d1 04       	cpc	r13, r1
+ 1fc:	e1 04       	cpc	r14, r1
+ 1fe:	f1 04       	cpc	r15, r1
+ 200:	28 f5       	brcc	.+74     	; 0x24c <OBSTACLE_DETECTOR+0x7c>
+		{
+			Obstacle_Detected = 1;
+ 202:	81 e0       	ldi	r24, 0x01	; 1
+ 204:	80 93 a4 00 	sts	0x00A4, r24	; 0x8000a4 <Obstacle_Detected>
+			Operation = First_Right_Degree;
+ 208:	80 93 a2 00 	sts	0x00A2, r24	; 0x8000a2 <__data_end>
+			VEHICLE_STOP();
+ 20c:	0e 94 83 00 	call	0x106	; 0x106 <VEHICLE_STOP>
+			SERVO_MOTOR_START(5/*SET FIRST RIGHT DEGREE*/);
+ 210:	85 e0       	ldi	r24, 0x05	; 5
+ 212:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+			LCD_Clear();
+ 216:	0e 94 06 04 	call	0x80c	; 0x80c <LCD_Clear>
+			LCD_GoTo(0, 5);
+ 21a:	65 e0       	ldi	r22, 0x05	; 5
+ 21c:	80 e0       	ldi	r24, 0x00	; 0
+ 21e:	0e 94 ee 03 	call	0x7dc	; 0x7dc <LCD_GoTo>
+			LCD_WriteString("Opstacle");
+ 222:	80 e9       	ldi	r24, 0x90	; 144
+ 224:	90 e0       	ldi	r25, 0x00	; 0
+ 226:	0e 94 db 03 	call	0x7b6	; 0x7b6 <LCD_WriteString>
+			LCD_GoTo(1, 5);
+ 22a:	65 e0       	ldi	r22, 0x05	; 5
+ 22c:	81 e0       	ldi	r24, 0x01	; 1
+ 22e:	0e 94 ee 03 	call	0x7dc	; 0x7dc <LCD_GoTo>
+			LCD_WriteString("Detected");
+ 232:	89 e9       	ldi	r24, 0x99	; 153
+ 234:	90 e0       	ldi	r25, 0x00	; 0
+ 236:	0e 94 db 03 	call	0x7b6	; 0x7b6 <LCD_WriteString>
+ 23a:	9f ef       	ldi	r25, 0xFF	; 255
+ 23c:	29 e6       	ldi	r18, 0x69	; 105
+ 23e:	88 e1       	ldi	r24, 0x18	; 24
+ 240:	91 50       	subi	r25, 0x01	; 1
+ 242:	20 40       	sbci	r18, 0x00	; 0
+ 244:	80 40       	sbci	r24, 0x00	; 0
+ 246:	e1 f7       	brne	.-8      	; 0x240 <OBSTACLE_DETECTOR+0x70>
+ 248:	00 c0       	rjmp	.+0      	; 0x24a <OBSTACLE_DETECTOR+0x7a>
+ 24a:	00 00       	nop
+			_delay_ms(500);
+		}
+	}
+	switch (Operation)
+ 24c:	80 91 a2 00 	lds	r24, 0x00A2	; 0x8000a2 <__data_end>
+ 250:	82 30       	cpi	r24, 0x02	; 2
+ 252:	79 f1       	breq	.+94     	; 0x2b2 <OBSTACLE_DETECTOR+0xe2>
+ 254:	18 f4       	brcc	.+6      	; 0x25c <OBSTACLE_DETECTOR+0x8c>
+ 256:	81 30       	cpi	r24, 0x01	; 1
+ 258:	41 f0       	breq	.+16     	; 0x26a <OBSTACLE_DETECTOR+0x9a>
+ 25a:	0e c1       	rjmp	.+540    	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+ 25c:	83 30       	cpi	r24, 0x03	; 3
+ 25e:	09 f4       	brne	.+2      	; 0x262 <OBSTACLE_DETECTOR+0x92>
+ 260:	4c c0       	rjmp	.+152    	; 0x2fa <OBSTACLE_DETECTOR+0x12a>
+ 262:	84 30       	cpi	r24, 0x04	; 4
+ 264:	09 f4       	brne	.+2      	; 0x268 <OBSTACLE_DETECTOR+0x98>
+ 266:	6d c0       	rjmp	.+218    	; 0x342 <OBSTACLE_DETECTOR+0x172>
+ 268:	07 c1       	rjmp	.+526    	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+	{
+	case First_Right_Degree:
+		Right_Distance += Distance;
+ 26a:	80 91 ad 00 	lds	r24, 0x00AD	; 0x8000ad <Right_Distance>
+ 26e:	90 91 ae 00 	lds	r25, 0x00AE	; 0x8000ae <Right_Distance+0x1>
+ 272:	a0 91 af 00 	lds	r26, 0x00AF	; 0x8000af <Right_Distance+0x2>
+ 276:	b0 91 b0 00 	lds	r27, 0x00B0	; 0x8000b0 <Right_Distance+0x3>
+ 27a:	c8 0e       	add	r12, r24
+ 27c:	d9 1e       	adc	r13, r25
+ 27e:	ea 1e       	adc	r14, r26
+ 280:	fb 1e       	adc	r15, r27
+ 282:	c0 92 ad 00 	sts	0x00AD, r12	; 0x8000ad <Right_Distance>
+ 286:	d0 92 ae 00 	sts	0x00AE, r13	; 0x8000ae <Right_Distance+0x1>
+ 28a:	e0 92 af 00 	sts	0x00AF, r14	; 0x8000af <Right_Distance+0x2>
+ 28e:	f0 92 b0 00 	sts	0x00B0, r15	; 0x8000b0 <Right_Distance+0x3>
+		SERVO_MOTOR_START(3/*SET LAST RIGHT DEGREE*/);
+ 292:	83 e0       	ldi	r24, 0x03	; 3
+ 294:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+ 298:	9f ef       	ldi	r25, 0xFF	; 255
+ 29a:	29 e6       	ldi	r18, 0x69	; 105
+ 29c:	88 e1       	ldi	r24, 0x18	; 24
+ 29e:	91 50       	subi	r25, 0x01	; 1
+ 2a0:	20 40       	sbci	r18, 0x00	; 0
+ 2a2:	80 40       	sbci	r24, 0x00	; 0
+ 2a4:	e1 f7       	brne	.-8      	; 0x29e <OBSTACLE_DETECTOR+0xce>
+ 2a6:	00 c0       	rjmp	.+0      	; 0x2a8 <OBSTACLE_DETECTOR+0xd8>
+ 2a8:	00 00       	nop
+		_delay_ms(500);
+		Operation = Last_Right_Degree;
+ 2aa:	82 e0       	ldi	r24, 0x02	; 2
+ 2ac:	80 93 a2 00 	sts	0x00A2, r24	; 0x8000a2 <__data_end>
+		break;
+ 2b0:	e3 c0       	rjmp	.+454    	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+	
+	case Last_Right_Degree:
+		Right_Distance += Distance;
+ 2b2:	80 91 ad 00 	lds	r24, 0x00AD	; 0x8000ad <Right_Distance>
+ 2b6:	90 91 ae 00 	lds	r25, 0x00AE	; 0x8000ae <Right_Distance+0x1>
+ 2ba:	a0 91 af 00 	lds	r26, 0x00AF	; 0x8000af <Right_Distance+0x2>
+ 2be:	b0 91 b0 00 	lds	r27, 0x00B0	; 0x8000b0 <Right_Distance+0x3>
+ 2c2:	c8 0e       	add	r12, r24
+ 2c4:	d9 1e       	adc	r13, r25
+ 2c6:	ea 1e       	adc	r14, r26
+ 2c8:	fb 1e       	adc	r15, r27
+ 2ca:	c0 92 ad 00 	sts	0x00AD, r12	; 0x8000ad <Right_Distance>
+ 2ce:	d0 92 ae 00 	sts	0x00AE, r13	; 0x8000ae <Right_Distance+0x1>
+ 2d2:	e0 92 af 00 	sts	0x00AF, r14	; 0x8000af <Right_Distance+0x2>
+ 2d6:	f0 92 b0 00 	sts	0x00B0, r15	; 0x8000b0 <Right_Distance+0x3>
+		SERVO_MOTOR_START(11/*SET FIRST LEFT DEGREE*/);
+ 2da:	8b e0       	ldi	r24, 0x0B	; 11
+ 2dc:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+ 2e0:	9f ef       	ldi	r25, 0xFF	; 255
+ 2e2:	29 e6       	ldi	r18, 0x69	; 105
+ 2e4:	88 e1       	ldi	r24, 0x18	; 24
+ 2e6:	91 50       	subi	r25, 0x01	; 1
+ 2e8:	20 40       	sbci	r18, 0x00	; 0
+ 2ea:	80 40       	sbci	r24, 0x00	; 0
+ 2ec:	e1 f7       	brne	.-8      	; 0x2e6 <OBSTACLE_DETECTOR+0x116>
+ 2ee:	00 c0       	rjmp	.+0      	; 0x2f0 <OBSTACLE_DETECTOR+0x120>
+ 2f0:	00 00       	nop
+		_delay_ms(500);
+		Operation = First_Left_degree;
+ 2f2:	83 e0       	ldi	r24, 0x03	; 3
+ 2f4:	80 93 a2 00 	sts	0x00A2, r24	; 0x8000a2 <__data_end>
+		break;
+ 2f8:	bf c0       	rjmp	.+382    	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+	
+	case First_Left_degree:
+		Left_Distance += Distance;
+ 2fa:	80 91 a9 00 	lds	r24, 0x00A9	; 0x8000a9 <Left_Distance>
+ 2fe:	90 91 aa 00 	lds	r25, 0x00AA	; 0x8000aa <Left_Distance+0x1>
+ 302:	a0 91 ab 00 	lds	r26, 0x00AB	; 0x8000ab <Left_Distance+0x2>
+ 306:	b0 91 ac 00 	lds	r27, 0x00AC	; 0x8000ac <Left_Distance+0x3>
+ 30a:	c8 0e       	add	r12, r24
+ 30c:	d9 1e       	adc	r13, r25
+ 30e:	ea 1e       	adc	r14, r26
+ 310:	fb 1e       	adc	r15, r27
+ 312:	c0 92 a9 00 	sts	0x00A9, r12	; 0x8000a9 <Left_Distance>
+ 316:	d0 92 aa 00 	sts	0x00AA, r13	; 0x8000aa <Left_Distance+0x1>
+ 31a:	e0 92 ab 00 	sts	0x00AB, r14	; 0x8000ab <Left_Distance+0x2>
+ 31e:	f0 92 ac 00 	sts	0x00AC, r15	; 0x8000ac <Left_Distance+0x3>
+		SERVO_MOTOR_START(12/*SET LAST LEFT DEGREE*/);
+ 322:	8c e0       	ldi	r24, 0x0C	; 12
+ 324:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+ 328:	9f ef       	ldi	r25, 0xFF	; 255
+ 32a:	29 e6       	ldi	r18, 0x69	; 105
+ 32c:	88 e1       	ldi	r24, 0x18	; 24
+ 32e:	91 50       	subi	r25, 0x01	; 1
+ 330:	20 40       	sbci	r18, 0x00	; 0
+ 332:	80 40       	sbci	r24, 0x00	; 0
+ 334:	e1 f7       	brne	.-8      	; 0x32e <OBSTACLE_DETECTOR+0x15e>
+ 336:	00 c0       	rjmp	.+0      	; 0x338 <OBSTACLE_DETECTOR+0x168>
+ 338:	00 00       	nop
+		_delay_ms(500);
+		Operation = Last_Left_Degree;
+ 33a:	84 e0       	ldi	r24, 0x04	; 4
+ 33c:	80 93 a2 00 	sts	0x00A2, r24	; 0x8000a2 <__data_end>
+		break;
+ 340:	9b c0       	rjmp	.+310    	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+	
+	case Last_Left_Degree:
+		Left_Distance += Distance;
+ 342:	80 91 a9 00 	lds	r24, 0x00A9	; 0x8000a9 <Left_Distance>
+ 346:	90 91 aa 00 	lds	r25, 0x00AA	; 0x8000aa <Left_Distance+0x1>
+ 34a:	a0 91 ab 00 	lds	r26, 0x00AB	; 0x8000ab <Left_Distance+0x2>
+ 34e:	b0 91 ac 00 	lds	r27, 0x00AC	; 0x8000ac <Left_Distance+0x3>
+ 352:	c8 0e       	add	r12, r24
+ 354:	d9 1e       	adc	r13, r25
+ 356:	ea 1e       	adc	r14, r26
+ 358:	fb 1e       	adc	r15, r27
+ 35a:	c0 92 a9 00 	sts	0x00A9, r12	; 0x8000a9 <Left_Distance>
+ 35e:	d0 92 aa 00 	sts	0x00AA, r13	; 0x8000aa <Left_Distance+0x1>
+ 362:	e0 92 ab 00 	sts	0x00AB, r14	; 0x8000ab <Left_Distance+0x2>
+ 366:	f0 92 ac 00 	sts	0x00AC, r15	; 0x8000ac <Left_Distance+0x3>
+		Tot_Distance = Right_Distance + Left_Distance;
+ 36a:	40 91 ad 00 	lds	r20, 0x00AD	; 0x8000ad <Right_Distance>
+ 36e:	50 91 ae 00 	lds	r21, 0x00AE	; 0x8000ae <Right_Distance+0x1>
+ 372:	60 91 af 00 	lds	r22, 0x00AF	; 0x8000af <Right_Distance+0x2>
+ 376:	70 91 b0 00 	lds	r23, 0x00B0	; 0x8000b0 <Right_Distance+0x3>
+ 37a:	d7 01       	movw	r26, r14
+ 37c:	c6 01       	movw	r24, r12
+ 37e:	84 0f       	add	r24, r20
+ 380:	95 1f       	adc	r25, r21
+ 382:	a6 1f       	adc	r26, r22
+ 384:	b7 1f       	adc	r27, r23
+ 386:	80 93 a5 00 	sts	0x00A5, r24	; 0x8000a5 <Tot_Distance>
+ 38a:	90 93 a6 00 	sts	0x00A6, r25	; 0x8000a6 <Tot_Distance+0x1>
+ 38e:	a0 93 a7 00 	sts	0x00A7, r26	; 0x8000a7 <Tot_Distance+0x2>
+ 392:	b0 93 a8 00 	sts	0x00A8, r27	; 0x8000a8 <Tot_Distance+0x3>
+		if (Tot_Distance < 100)
+ 396:	84 36       	cpi	r24, 0x64	; 100
+ 398:	91 05       	cpc	r25, r1
+ 39a:	a1 05       	cpc	r26, r1
+ 39c:	b1 05       	cpc	r27, r1
+ 39e:	90 f4       	brcc	.+36     	; 0x3c4 <OBSTACLE_DETECTOR+0x1f4>
+		{
+			MOVE_BACKWARD();
+ 3a0:	0e 94 86 00 	call	0x10c	; 0x10c <MOVE_BACKWARD>
+			SERVO_MOTOR_START(8/*SET initial DEGREE*/);
+ 3a4:	88 e0       	ldi	r24, 0x08	; 8
+ 3a6:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+ 3aa:	9f ef       	ldi	r25, 0xFF	; 255
+ 3ac:	29 e6       	ldi	r18, 0x69	; 105
+ 3ae:	88 e1       	ldi	r24, 0x18	; 24
+ 3b0:	91 50       	subi	r25, 0x01	; 1
+ 3b2:	20 40       	sbci	r18, 0x00	; 0
+ 3b4:	80 40       	sbci	r24, 0x00	; 0
+ 3b6:	e1 f7       	brne	.-8      	; 0x3b0 <OBSTACLE_DETECTOR+0x1e0>
+ 3b8:	00 c0       	rjmp	.+0      	; 0x3ba <OBSTACLE_DETECTOR+0x1ea>
+ 3ba:	00 00       	nop
+			_delay_ms(500);
+			Operation = First_Right_Degree;
+ 3bc:	81 e0       	ldi	r24, 0x01	; 1
+ 3be:	80 93 a2 00 	sts	0x00A2, r24	; 0x8000a2 <__data_end>
+ 3c2:	5a c0       	rjmp	.+180    	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+		}
+		else
+		{
+			if (Right_Distance > Left_Distance)
+ 3c4:	c4 16       	cp	r12, r20
+ 3c6:	d5 06       	cpc	r13, r21
+ 3c8:	e6 06       	cpc	r14, r22
+ 3ca:	f7 06       	cpc	r15, r23
+ 3cc:	58 f5       	brcc	.+86     	; 0x424 <__EEPROM_REGION_LENGTH__+0x24>
+			{
+				SERVO_MOTOR_START(8/*SET initial DEGREE*/);
+ 3ce:	88 e0       	ldi	r24, 0x08	; 8
+ 3d0:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+				TURN_RIGHT();
+ 3d4:	0e 94 c4 00 	call	0x188	; 0x188 <TURN_RIGHT>
+ 3d8:	9f ef       	ldi	r25, 0xFF	; 255
+ 3da:	29 e6       	ldi	r18, 0x69	; 105
+ 3dc:	88 e1       	ldi	r24, 0x18	; 24
+ 3de:	91 50       	subi	r25, 0x01	; 1
+ 3e0:	20 40       	sbci	r18, 0x00	; 0
+ 3e2:	80 40       	sbci	r24, 0x00	; 0
+ 3e4:	e1 f7       	brne	.-8      	; 0x3de <OBSTACLE_DETECTOR+0x20e>
+ 3e6:	00 c0       	rjmp	.+0      	; 0x3e8 <OBSTACLE_DETECTOR+0x218>
+ 3e8:	00 00       	nop
+				_delay_ms(500);
+				
+				Obstacle_Detected = 0;
+ 3ea:	10 92 a4 00 	sts	0x00A4, r1	; 0x8000a4 <Obstacle_Detected>
+				Tot_Distance = 0;
+ 3ee:	10 92 a5 00 	sts	0x00A5, r1	; 0x8000a5 <Tot_Distance>
+ 3f2:	10 92 a6 00 	sts	0x00A6, r1	; 0x8000a6 <Tot_Distance+0x1>
+ 3f6:	10 92 a7 00 	sts	0x00A7, r1	; 0x8000a7 <Tot_Distance+0x2>
+ 3fa:	10 92 a8 00 	sts	0x00A8, r1	; 0x8000a8 <Tot_Distance+0x3>
+				Left_Distance = 0;
+ 3fe:	10 92 a9 00 	sts	0x00A9, r1	; 0x8000a9 <Left_Distance>
+ 402:	10 92 aa 00 	sts	0x00AA, r1	; 0x8000aa <Left_Distance+0x1>
+ 406:	10 92 ab 00 	sts	0x00AB, r1	; 0x8000ab <Left_Distance+0x2>
+ 40a:	10 92 ac 00 	sts	0x00AC, r1	; 0x8000ac <Left_Distance+0x3>
+				Right_Distance = 0;
+ 40e:	10 92 ad 00 	sts	0x00AD, r1	; 0x8000ad <Right_Distance>
+ 412:	10 92 ae 00 	sts	0x00AE, r1	; 0x8000ae <Right_Distance+0x1>
+ 416:	10 92 af 00 	sts	0x00AF, r1	; 0x8000af <Right_Distance+0x2>
+ 41a:	10 92 b0 00 	sts	0x00B0, r1	; 0x8000b0 <Right_Distance+0x3>
+				Operation = No_Operation;
+ 41e:	10 92 a2 00 	sts	0x00A2, r1	; 0x8000a2 <__data_end>
+ 422:	2a c0       	rjmp	.+84     	; 0x478 <__EEPROM_REGION_LENGTH__+0x78>
+			} 
+			else
+			{
+				
+				SERVO_MOTOR_START(8/*SET initial DEGREE*/);
+ 424:	88 e0       	ldi	r24, 0x08	; 8
+ 426:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+				TURN_LEFT();
+ 42a:	0e 94 a0 00 	call	0x140	; 0x140 <TURN_LEFT>
+ 42e:	9f ef       	ldi	r25, 0xFF	; 255
+ 430:	29 e6       	ldi	r18, 0x69	; 105
+ 432:	88 e1       	ldi	r24, 0x18	; 24
+ 434:	91 50       	subi	r25, 0x01	; 1
+ 436:	20 40       	sbci	r18, 0x00	; 0
+ 438:	80 40       	sbci	r24, 0x00	; 0
+ 43a:	e1 f7       	brne	.-8      	; 0x434 <__EEPROM_REGION_LENGTH__+0x34>
+ 43c:	00 c0       	rjmp	.+0      	; 0x43e <__EEPROM_REGION_LENGTH__+0x3e>
+ 43e:	00 00       	nop
+				_delay_ms(500);
+				Obstacle_Detected = 0;
+ 440:	10 92 a4 00 	sts	0x00A4, r1	; 0x8000a4 <Obstacle_Detected>
+				Tot_Distance = 0;
+ 444:	10 92 a5 00 	sts	0x00A5, r1	; 0x8000a5 <Tot_Distance>
+ 448:	10 92 a6 00 	sts	0x00A6, r1	; 0x8000a6 <Tot_Distance+0x1>
+ 44c:	10 92 a7 00 	sts	0x00A7, r1	; 0x8000a7 <Tot_Distance+0x2>
+ 450:	10 92 a8 00 	sts	0x00A8, r1	; 0x8000a8 <Tot_Distance+0x3>
+				Left_Distance = 0;
+ 454:	10 92 a9 00 	sts	0x00A9, r1	; 0x8000a9 <Left_Distance>
+ 458:	10 92 aa 00 	sts	0x00AA, r1	; 0x8000aa <Left_Distance+0x1>
+ 45c:	10 92 ab 00 	sts	0x00AB, r1	; 0x8000ab <Left_Distance+0x2>
+ 460:	10 92 ac 00 	sts	0x00AC, r1	; 0x8000ac <Left_Distance+0x3>
+				Right_Distance = 0;
+ 464:	10 92 ad 00 	sts	0x00AD, r1	; 0x8000ad <Right_Distance>
+ 468:	10 92 ae 00 	sts	0x00AE, r1	; 0x8000ae <Right_Distance+0x1>
+ 46c:	10 92 af 00 	sts	0x00AF, r1	; 0x8000af <Right_Distance+0x2>
+ 470:	10 92 b0 00 	sts	0x00B0, r1	; 0x8000b0 <Right_Distance+0x3>
+				Operation = No_Operation;
+ 474:	10 92 a2 00 	sts	0x00A2, r1	; 0x8000a2 <__data_end>
+		break;
+	default:
+		break;
+		
+	}
+}
+ 478:	ff 90       	pop	r15
+ 47a:	ef 90       	pop	r14
+ 47c:	df 90       	pop	r13
+ 47e:	cf 90       	pop	r12
+ 480:	08 95       	ret
+
+00000482 <VEHICLE_MANEGMENT>:
+	Function Description : operating the car by sending pulse to the ultrasonic sensors.
+*/
+
+void VEHICLE_MANEGMENT (void)
+{
+	ULTRASONIC_TREGGIER();
+ 482:	0e 94 73 04 	call	0x8e6	; 0x8e6 <ULTRASONIC_TREGGIER>
+	ULTRASONIC_02_TREGGIER();
+ 486:	0e 94 e7 04 	call	0x9ce	; 0x9ce <ULTRASONIC_02_TREGGIER>
+ 48a:	08 95       	ret
+
+0000048c <DC_MOTOR_INIT>:
+	Function Arguments   : void
+	Function Description : Initialize 4X dc_motor
+*/
+void DC_MOTOR_INIT(void)
+{
+	DIO_SetPinDir(IN_11_PORT, IN_11, DIO_PIN_OUTPUT);
+ 48c:	41 e0       	ldi	r20, 0x01	; 1
+ 48e:	63 e0       	ldi	r22, 0x03	; 3
+ 490:	82 e0       	ldi	r24, 0x02	; 2
+ 492:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(IN_12_PORT, IN_12, DIO_PIN_OUTPUT);
+ 496:	41 e0       	ldi	r20, 0x01	; 1
+ 498:	64 e0       	ldi	r22, 0x04	; 4
+ 49a:	82 e0       	ldi	r24, 0x02	; 2
+ 49c:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(IN_21_PORT, IN_21, DIO_PIN_OUTPUT);
+ 4a0:	41 e0       	ldi	r20, 0x01	; 1
+ 4a2:	63 e0       	ldi	r22, 0x03	; 3
+ 4a4:	82 e0       	ldi	r24, 0x02	; 2
+ 4a6:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(IN_22_PORT, IN_22, DIO_PIN_OUTPUT);
+ 4aa:	41 e0       	ldi	r20, 0x01	; 1
+ 4ac:	64 e0       	ldi	r22, 0x04	; 4
+ 4ae:	82 e0       	ldi	r24, 0x02	; 2
+ 4b0:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(IN_31_PORT, IN_31, DIO_PIN_OUTPUT);
+ 4b4:	41 e0       	ldi	r20, 0x01	; 1
+ 4b6:	65 e0       	ldi	r22, 0x05	; 5
+ 4b8:	82 e0       	ldi	r24, 0x02	; 2
+ 4ba:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(IN_32_PORT, IN_32, DIO_PIN_OUTPUT);
+ 4be:	41 e0       	ldi	r20, 0x01	; 1
+ 4c0:	66 e0       	ldi	r22, 0x06	; 6
+ 4c2:	82 e0       	ldi	r24, 0x02	; 2
+ 4c4:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(IN_41_PORT, IN_41, DIO_PIN_OUTPUT);
+ 4c8:	41 e0       	ldi	r20, 0x01	; 1
+ 4ca:	65 e0       	ldi	r22, 0x05	; 5
+ 4cc:	82 e0       	ldi	r24, 0x02	; 2
+ 4ce:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(IN_42_PORT, IN_42, DIO_PIN_OUTPUT);
+ 4d2:	41 e0       	ldi	r20, 0x01	; 1
+ 4d4:	66 e0       	ldi	r22, 0x06	; 6
+ 4d6:	82 e0       	ldi	r24, 0x02	; 2
+ 4d8:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+ 4dc:	08 95       	ret
+
+000004de <DC_MOTOR_DIRECTION>:
+	Function Description : set the direction of the motors
+*/
+
+void DC_MOTOR_DIRECTION(uint8 MOTOR_NUM, uint8 DIRECTION)
+{
+	switch (DIRECTION)
+ 4de:	66 23       	and	r22, r22
+ 4e0:	19 f0       	breq	.+6      	; 0x4e8 <DC_MOTOR_DIRECTION+0xa>
+ 4e2:	61 30       	cpi	r22, 0x01	; 1
+ 4e4:	c1 f1       	breq	.+112    	; 0x556 <DC_MOTOR_DIRECTION+0x78>
+ 4e6:	08 95       	ret
+	{
+		case CLOCK_WISE:
+			switch (MOTOR_NUM)
+ 4e8:	82 30       	cpi	r24, 0x02	; 2
+ 4ea:	a1 f0       	breq	.+40     	; 0x514 <DC_MOTOR_DIRECTION+0x36>
+ 4ec:	18 f4       	brcc	.+6      	; 0x4f4 <DC_MOTOR_DIRECTION+0x16>
+ 4ee:	81 30       	cpi	r24, 0x01	; 1
+ 4f0:	31 f0       	breq	.+12     	; 0x4fe <DC_MOTOR_DIRECTION+0x20>
+ 4f2:	08 95       	ret
+ 4f4:	83 30       	cpi	r24, 0x03	; 3
+ 4f6:	c9 f0       	breq	.+50     	; 0x52a <DC_MOTOR_DIRECTION+0x4c>
+ 4f8:	84 30       	cpi	r24, 0x04	; 4
+ 4fa:	11 f1       	breq	.+68     	; 0x540 <DC_MOTOR_DIRECTION+0x62>
+ 4fc:	08 95       	ret
+			{
+				case MOTOR_1:
+					DIO_SetPinVal(IN_11_PORT , IN_11 , DIO_PIN_HIGH);
+ 4fe:	41 e0       	ldi	r20, 0x01	; 1
+ 500:	63 e0       	ldi	r22, 0x03	; 3
+ 502:	82 e0       	ldi	r24, 0x02	; 2
+ 504:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_12_PORT , IN_12 , DIO_PIN_LOW);
+ 508:	40 e0       	ldi	r20, 0x00	; 0
+ 50a:	64 e0       	ldi	r22, 0x04	; 4
+ 50c:	82 e0       	ldi	r24, 0x02	; 2
+ 50e:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					break;
+ 512:	08 95       	ret
+				case MOTOR_2:
+					DIO_SetPinVal(IN_21_PORT , IN_21 , DIO_PIN_HIGH);
+ 514:	41 e0       	ldi	r20, 0x01	; 1
+ 516:	63 e0       	ldi	r22, 0x03	; 3
+ 518:	82 e0       	ldi	r24, 0x02	; 2
+ 51a:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_22_PORT , IN_22 , DIO_PIN_LOW);
+ 51e:	40 e0       	ldi	r20, 0x00	; 0
+ 520:	64 e0       	ldi	r22, 0x04	; 4
+ 522:	82 e0       	ldi	r24, 0x02	; 2
+ 524:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					break;
+ 528:	08 95       	ret
+				case MOTOR_3:
+					DIO_SetPinVal(IN_31_PORT , IN_31 , DIO_PIN_HIGH);
+ 52a:	41 e0       	ldi	r20, 0x01	; 1
+ 52c:	65 e0       	ldi	r22, 0x05	; 5
+ 52e:	82 e0       	ldi	r24, 0x02	; 2
+ 530:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_32_PORT , IN_32 , DIO_PIN_LOW);
+ 534:	40 e0       	ldi	r20, 0x00	; 0
+ 536:	66 e0       	ldi	r22, 0x06	; 6
+ 538:	82 e0       	ldi	r24, 0x02	; 2
+ 53a:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					break;
+ 53e:	08 95       	ret
+				case MOTOR_4:
+					DIO_SetPinVal(IN_41_PORT , IN_41 , DIO_PIN_HIGH);
+ 540:	41 e0       	ldi	r20, 0x01	; 1
+ 542:	65 e0       	ldi	r22, 0x05	; 5
+ 544:	82 e0       	ldi	r24, 0x02	; 2
+ 546:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_42_PORT , IN_42 , DIO_PIN_LOW);
+ 54a:	40 e0       	ldi	r20, 0x00	; 0
+ 54c:	66 e0       	ldi	r22, 0x06	; 6
+ 54e:	82 e0       	ldi	r24, 0x02	; 2
+ 550:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					break;
+ 554:	08 95       	ret
+				default:
+					break;
+			}
+			break;
+		case ANTi_CLOCK_WISE:
+			switch (MOTOR_NUM)
+ 556:	82 30       	cpi	r24, 0x02	; 2
+ 558:	a1 f0       	breq	.+40     	; 0x582 <DC_MOTOR_DIRECTION+0xa4>
+ 55a:	18 f4       	brcc	.+6      	; 0x562 <DC_MOTOR_DIRECTION+0x84>
+ 55c:	81 30       	cpi	r24, 0x01	; 1
+ 55e:	31 f0       	breq	.+12     	; 0x56c <DC_MOTOR_DIRECTION+0x8e>
+ 560:	08 95       	ret
+ 562:	83 30       	cpi	r24, 0x03	; 3
+ 564:	c9 f0       	breq	.+50     	; 0x598 <DC_MOTOR_DIRECTION+0xba>
+ 566:	84 30       	cpi	r24, 0x04	; 4
+ 568:	11 f1       	breq	.+68     	; 0x5ae <DC_MOTOR_DIRECTION+0xd0>
+ 56a:	08 95       	ret
+			{
+				case MOTOR_1:
+					DIO_SetPinVal(IN_11_PORT , IN_11 , DIO_PIN_LOW);
+ 56c:	40 e0       	ldi	r20, 0x00	; 0
+ 56e:	63 e0       	ldi	r22, 0x03	; 3
+ 570:	82 e0       	ldi	r24, 0x02	; 2
+ 572:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_12_PORT , IN_12 , DIO_PIN_HIGH);
+ 576:	41 e0       	ldi	r20, 0x01	; 1
+ 578:	64 e0       	ldi	r22, 0x04	; 4
+ 57a:	82 e0       	ldi	r24, 0x02	; 2
+ 57c:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					break;
+ 580:	08 95       	ret
+				case MOTOR_2:
+					DIO_SetPinVal(IN_21_PORT , IN_21 , DIO_PIN_LOW);
+ 582:	40 e0       	ldi	r20, 0x00	; 0
+ 584:	63 e0       	ldi	r22, 0x03	; 3
+ 586:	82 e0       	ldi	r24, 0x02	; 2
+ 588:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_22_PORT , IN_22 , DIO_PIN_HIGH);
+ 58c:	41 e0       	ldi	r20, 0x01	; 1
+ 58e:	64 e0       	ldi	r22, 0x04	; 4
+ 590:	82 e0       	ldi	r24, 0x02	; 2
+ 592:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					break;
+ 596:	08 95       	ret
+				case MOTOR_3:
+					DIO_SetPinVal(IN_31_PORT , IN_31 , DIO_PIN_LOW);
+ 598:	40 e0       	ldi	r20, 0x00	; 0
+ 59a:	65 e0       	ldi	r22, 0x05	; 5
+ 59c:	82 e0       	ldi	r24, 0x02	; 2
+ 59e:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_32_PORT , IN_32 , DIO_PIN_HIGH);
+ 5a2:	41 e0       	ldi	r20, 0x01	; 1
+ 5a4:	66 e0       	ldi	r22, 0x06	; 6
+ 5a6:	82 e0       	ldi	r24, 0x02	; 2
+ 5a8:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					break;
+ 5ac:	08 95       	ret
+				case MOTOR_4:
+					DIO_SetPinVal(IN_41_PORT , IN_41 , DIO_PIN_LOW);
+ 5ae:	40 e0       	ldi	r20, 0x00	; 0
+ 5b0:	65 e0       	ldi	r22, 0x05	; 5
+ 5b2:	82 e0       	ldi	r24, 0x02	; 2
+ 5b4:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+					DIO_SetPinVal(IN_42_PORT , IN_42 , DIO_PIN_HIGH);
+ 5b8:	41 e0       	ldi	r20, 0x01	; 1
+ 5ba:	66 e0       	ldi	r22, 0x06	; 6
+ 5bc:	82 e0       	ldi	r24, 0x02	; 2
+ 5be:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 5c2:	08 95       	ret
+
+000005c4 <DC_MOTOR_STOP>:
+*/
+
+
+void DC_MOTOR_STOP(void)
+{
+	DIO_SetPinVal(IN_11_PORT , IN_11 , DIO_PIN_HIGH);
+ 5c4:	41 e0       	ldi	r20, 0x01	; 1
+ 5c6:	63 e0       	ldi	r22, 0x03	; 3
+ 5c8:	82 e0       	ldi	r24, 0x02	; 2
+ 5ca:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	DIO_SetPinVal(IN_12_PORT , IN_12 , DIO_PIN_HIGH);
+ 5ce:	41 e0       	ldi	r20, 0x01	; 1
+ 5d0:	64 e0       	ldi	r22, 0x04	; 4
+ 5d2:	82 e0       	ldi	r24, 0x02	; 2
+ 5d4:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	DIO_SetPinVal(IN_21_PORT , IN_21 , DIO_PIN_HIGH);
+ 5d8:	41 e0       	ldi	r20, 0x01	; 1
+ 5da:	63 e0       	ldi	r22, 0x03	; 3
+ 5dc:	82 e0       	ldi	r24, 0x02	; 2
+ 5de:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	DIO_SetPinVal(IN_22_PORT , IN_22 , DIO_PIN_HIGH);
+ 5e2:	41 e0       	ldi	r20, 0x01	; 1
+ 5e4:	64 e0       	ldi	r22, 0x04	; 4
+ 5e6:	82 e0       	ldi	r24, 0x02	; 2
+ 5e8:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	DIO_SetPinVal(IN_31_PORT , IN_31 , DIO_PIN_HIGH);
+ 5ec:	41 e0       	ldi	r20, 0x01	; 1
+ 5ee:	65 e0       	ldi	r22, 0x05	; 5
+ 5f0:	82 e0       	ldi	r24, 0x02	; 2
+ 5f2:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	DIO_SetPinVal(IN_32_PORT , IN_32 , DIO_PIN_HIGH);
+ 5f6:	41 e0       	ldi	r20, 0x01	; 1
+ 5f8:	66 e0       	ldi	r22, 0x06	; 6
+ 5fa:	82 e0       	ldi	r24, 0x02	; 2
+ 5fc:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	DIO_SetPinVal(IN_41_PORT , IN_41 , DIO_PIN_HIGH);
+ 600:	41 e0       	ldi	r20, 0x01	; 1
+ 602:	65 e0       	ldi	r22, 0x05	; 5
+ 604:	82 e0       	ldi	r24, 0x02	; 2
+ 606:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	DIO_SetPinVal(IN_42_PORT , IN_42 , DIO_PIN_HIGH);
+ 60a:	41 e0       	ldi	r20, 0x01	; 1
+ 60c:	66 e0       	ldi	r22, 0x06	; 6
+ 60e:	82 e0       	ldi	r24, 0x02	; 2
+ 610:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 614:	08 95       	ret
+
+00000616 <LCD_WriteCommand>:
+	LCD_WriteCommand(0x02);  // kadh 3malth return to home
+#endif
+}
+
+void LCD_WriteCommand(uint8 cmd)  // rs cmd reg walh data reg
+{
+ 616:	cf 93       	push	r28
+ 618:	c8 2f       	mov	r28, r24
+ DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_RS_PIN,DIO_PIN_LOW );
+ 61a:	40 e0       	ldi	r20, 0x00	; 0
+ 61c:	61 e0       	ldi	r22, 0x01	; 1
+ 61e:	81 e0       	ldi	r24, 0x01	; 1
+ 620:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_RW_PIN,DIO_PIN_LOW );
+ 624:	40 e0       	ldi	r20, 0x00	; 0
+ 626:	62 e0       	ldi	r22, 0x02	; 2
+ 628:	81 e0       	ldi	r24, 0x01	; 1
+ 62a:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_LOW );
+ 62e:	40 e0       	ldi	r20, 0x00	; 0
+ 630:	63 e0       	ldi	r22, 0x03	; 3
+ 632:	81 e0       	ldi	r24, 0x01	; 1
+ 634:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+
+ PORTA = (cmd & 0xf0)|(PORTA & 0x0f);
+ 638:	8b b3       	in	r24, 0x1b	; 27
+ 63a:	9c 2f       	mov	r25, r28
+ 63c:	90 7f       	andi	r25, 0xF0	; 240
+ 63e:	8f 70       	andi	r24, 0x0F	; 15
+ 640:	89 2b       	or	r24, r25
+ 642:	8b bb       	out	0x1b, r24	; 27
+
+ DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_HIGH);
+ 644:	41 e0       	ldi	r20, 0x01	; 1
+ 646:	63 e0       	ldi	r22, 0x03	; 3
+ 648:	81 e0       	ldi	r24, 0x01	; 1
+ 64a:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 64e:	8f e9       	ldi	r24, 0x9F	; 159
+ 650:	9f e0       	ldi	r25, 0x0F	; 15
+ 652:	01 97       	sbiw	r24, 0x01	; 1
+ 654:	f1 f7       	brne	.-4      	; 0x652 <LCD_WriteCommand+0x3c>
+ 656:	00 c0       	rjmp	.+0      	; 0x658 <LCD_WriteCommand+0x42>
+ 658:	00 00       	nop
+ _delay_ms(1); // bta3 latch
+ DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_LOW );
+ 65a:	40 e0       	ldi	r20, 0x00	; 0
+ 65c:	63 e0       	ldi	r22, 0x03	; 3
+ 65e:	81 e0       	ldi	r24, 0x01	; 1
+ 660:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+
+ PORTA = (cmd << 4)|(PORTA & 0x0f);
+ 664:	20 e1       	ldi	r18, 0x10	; 16
+ 666:	c2 9f       	mul	r28, r18
+ 668:	c0 01       	movw	r24, r0
+ 66a:	11 24       	eor	r1, r1
+ 66c:	9b b3       	in	r25, 0x1b	; 27
+ 66e:	9f 70       	andi	r25, 0x0F	; 15
+ 670:	89 2b       	or	r24, r25
+ 672:	8b bb       	out	0x1b, r24	; 27
+
+ DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_HIGH);
+ 674:	41 e0       	ldi	r20, 0x01	; 1
+ 676:	63 e0       	ldi	r22, 0x03	; 3
+ 678:	81 e0       	ldi	r24, 0x01	; 1
+ 67a:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 67e:	8f e9       	ldi	r24, 0x9F	; 159
+ 680:	9f e0       	ldi	r25, 0x0F	; 15
+ 682:	01 97       	sbiw	r24, 0x01	; 1
+ 684:	f1 f7       	brne	.-4      	; 0x682 <LCD_WriteCommand+0x6c>
+ 686:	00 c0       	rjmp	.+0      	; 0x688 <LCD_WriteCommand+0x72>
+ 688:	00 00       	nop
+  _delay_ms(1); // bta3 latch
+  DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_LOW );
+ 68a:	40 e0       	ldi	r20, 0x00	; 0
+ 68c:	63 e0       	ldi	r22, 0x03	; 3
+ 68e:	81 e0       	ldi	r24, 0x01	; 1
+ 690:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 694:	8f e1       	ldi	r24, 0x1F	; 31
+ 696:	9e e4       	ldi	r25, 0x4E	; 78
+ 698:	01 97       	sbiw	r24, 0x01	; 1
+ 69a:	f1 f7       	brne	.-4      	; 0x698 <LCD_WriteCommand+0x82>
+ 69c:	00 c0       	rjmp	.+0      	; 0x69e <LCD_WriteCommand+0x88>
+ 69e:	00 00       	nop
+
+  _delay_ms(5);
+}
+ 6a0:	cf 91       	pop	r28
+ 6a2:	08 95       	ret
+
+000006a4 <LCD_Init>:
+	LCD_WriteCommand(0x01);    //kadh clear lcd
+	LCD_WriteCommand(0x06);   // kadh cursor right or inc
+	LCD_WriteCommand(0x02);  // kadh 3malth return to home
+#elif LCD_MODE == 4 //init the pins dir in 4bit mode
+
+	DIO_SetPinDir(LCD_4BIT_CMD_PORT,LCD_RS_PIN, DIO_PIN_OUTPUT );
+ 6a4:	41 e0       	ldi	r20, 0x01	; 1
+ 6a6:	61 e0       	ldi	r22, 0x01	; 1
+ 6a8:	81 e0       	ldi	r24, 0x01	; 1
+ 6aa:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(LCD_4BIT_CMD_PORT,LCD_RW_PIN, DIO_PIN_OUTPUT );
+ 6ae:	41 e0       	ldi	r20, 0x01	; 1
+ 6b0:	62 e0       	ldi	r22, 0x02	; 2
+ 6b2:	81 e0       	ldi	r24, 0x01	; 1
+ 6b4:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(LCD_4BIT_CMD_PORT,LCD_E_PIN, DIO_PIN_OUTPUT );
+ 6b8:	41 e0       	ldi	r20, 0x01	; 1
+ 6ba:	63 e0       	ldi	r22, 0x03	; 3
+ 6bc:	81 e0       	ldi	r24, 0x01	; 1
+ 6be:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+
+	DIO_SetPinDir(LCD_4BIT_DATA_PORT, D4_PIN, DIO_PIN_OUTPUT);
+ 6c2:	41 e0       	ldi	r20, 0x01	; 1
+ 6c4:	64 e0       	ldi	r22, 0x04	; 4
+ 6c6:	80 e0       	ldi	r24, 0x00	; 0
+ 6c8:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(LCD_4BIT_DATA_PORT, D5_PIN, DIO_PIN_OUTPUT);
+ 6cc:	41 e0       	ldi	r20, 0x01	; 1
+ 6ce:	65 e0       	ldi	r22, 0x05	; 5
+ 6d0:	80 e0       	ldi	r24, 0x00	; 0
+ 6d2:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(LCD_4BIT_DATA_PORT, D6_PIN, DIO_PIN_OUTPUT);
+ 6d6:	41 e0       	ldi	r20, 0x01	; 1
+ 6d8:	66 e0       	ldi	r22, 0x06	; 6
+ 6da:	80 e0       	ldi	r24, 0x00	; 0
+ 6dc:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	DIO_SetPinDir(LCD_4BIT_DATA_PORT, D7_PIN, DIO_PIN_OUTPUT);
+ 6e0:	41 e0       	ldi	r20, 0x01	; 1
+ 6e2:	67 e0       	ldi	r22, 0x07	; 7
+ 6e4:	80 e0       	ldi	r24, 0x00	; 0
+ 6e6:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+ 6ea:	2f ef       	ldi	r18, 0xFF	; 255
+ 6ec:	81 ee       	ldi	r24, 0xE1	; 225
+ 6ee:	94 e0       	ldi	r25, 0x04	; 4
+ 6f0:	21 50       	subi	r18, 0x01	; 1
+ 6f2:	80 40       	sbci	r24, 0x00	; 0
+ 6f4:	90 40       	sbci	r25, 0x00	; 0
+ 6f6:	e1 f7       	brne	.-8      	; 0x6f0 <LCD_Init+0x4c>
+ 6f8:	00 c0       	rjmp	.+0      	; 0x6fa <LCD_Init+0x56>
+ 6fa:	00 00       	nop
+
+	_delay_ms(100);
+	// send commands to lcd for init as 4 bit mode
+	LCD_WriteCommand(0x33);
+ 6fc:	83 e3       	ldi	r24, 0x33	; 51
+ 6fe:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+	LCD_WriteCommand(0x32);
+ 702:	82 e3       	ldi	r24, 0x32	; 50
+ 704:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+	LCD_WriteCommand(0x28);
+ 708:	88 e2       	ldi	r24, 0x28	; 40
+ 70a:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+
+	LCD_WriteCommand(0x0c);     //kadh close cursor
+ 70e:	8c e0       	ldi	r24, 0x0C	; 12
+ 710:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+	LCD_WriteCommand(0x01);    //kadh clear lcd
+ 714:	81 e0       	ldi	r24, 0x01	; 1
+ 716:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+	LCD_WriteCommand(0x06);   // kadh cursor right or inc
+ 71a:	86 e0       	ldi	r24, 0x06	; 6
+ 71c:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+	LCD_WriteCommand(0x02);  // kadh 3malth return to home
+ 720:	82 e0       	ldi	r24, 0x02	; 2
+ 722:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+ 726:	08 95       	ret
+
+00000728 <LCD_WriteChar>:
+  DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_LOW );
+
+  _delay_ms(5);
+}
+void LCD_WriteChar(uint8 chr)
+{
+ 728:	cf 93       	push	r28
+ 72a:	c8 2f       	mov	r28, r24
+	 DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_RS_PIN,DIO_PIN_HIGH ); // Rs High bass kadh htktb 3lah data reg
+ 72c:	41 e0       	ldi	r20, 0x01	; 1
+ 72e:	61 e0       	ldi	r22, 0x01	; 1
+ 730:	81 e0       	ldi	r24, 0x01	; 1
+ 732:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	 DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_RW_PIN,DIO_PIN_LOW );
+ 736:	40 e0       	ldi	r20, 0x00	; 0
+ 738:	62 e0       	ldi	r22, 0x02	; 2
+ 73a:	81 e0       	ldi	r24, 0x01	; 1
+ 73c:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+	 DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_LOW );
+ 740:	40 e0       	ldi	r20, 0x00	; 0
+ 742:	63 e0       	ldi	r22, 0x03	; 3
+ 744:	81 e0       	ldi	r24, 0x01	; 1
+ 746:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+
+	 PORTA = (chr & 0xf0)|(PORTA & 0x0f);
+ 74a:	8b b3       	in	r24, 0x1b	; 27
+ 74c:	9c 2f       	mov	r25, r28
+ 74e:	90 7f       	andi	r25, 0xF0	; 240
+ 750:	8f 70       	andi	r24, 0x0F	; 15
+ 752:	89 2b       	or	r24, r25
+ 754:	8b bb       	out	0x1b, r24	; 27
+
+	 DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_HIGH);
+ 756:	41 e0       	ldi	r20, 0x01	; 1
+ 758:	63 e0       	ldi	r22, 0x03	; 3
+ 75a:	81 e0       	ldi	r24, 0x01	; 1
+ 75c:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 760:	8f e9       	ldi	r24, 0x9F	; 159
+ 762:	9f e0       	ldi	r25, 0x0F	; 15
+ 764:	01 97       	sbiw	r24, 0x01	; 1
+ 766:	f1 f7       	brne	.-4      	; 0x764 <LCD_WriteChar+0x3c>
+ 768:	00 c0       	rjmp	.+0      	; 0x76a <LCD_WriteChar+0x42>
+ 76a:	00 00       	nop
+	 _delay_ms(1); // bta3 latch
+	 DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_LOW );
+ 76c:	40 e0       	ldi	r20, 0x00	; 0
+ 76e:	63 e0       	ldi	r22, 0x03	; 3
+ 770:	81 e0       	ldi	r24, 0x01	; 1
+ 772:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+
+	 PORTA = (chr << 4)|(PORTA & 0x0f);
+ 776:	20 e1       	ldi	r18, 0x10	; 16
+ 778:	c2 9f       	mul	r28, r18
+ 77a:	c0 01       	movw	r24, r0
+ 77c:	11 24       	eor	r1, r1
+ 77e:	9b b3       	in	r25, 0x1b	; 27
+ 780:	9f 70       	andi	r25, 0x0F	; 15
+ 782:	89 2b       	or	r24, r25
+ 784:	8b bb       	out	0x1b, r24	; 27
+
+	 DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_HIGH);
+ 786:	41 e0       	ldi	r20, 0x01	; 1
+ 788:	63 e0       	ldi	r22, 0x03	; 3
+ 78a:	81 e0       	ldi	r24, 0x01	; 1
+ 78c:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 790:	8f e9       	ldi	r24, 0x9F	; 159
+ 792:	9f e0       	ldi	r25, 0x0F	; 15
+ 794:	01 97       	sbiw	r24, 0x01	; 1
+ 796:	f1 f7       	brne	.-4      	; 0x794 <LCD_WriteChar+0x6c>
+ 798:	00 c0       	rjmp	.+0      	; 0x79a <LCD_WriteChar+0x72>
+ 79a:	00 00       	nop
+	  _delay_ms(1); // bta3 latch
+	  DIO_SetPinVal(LCD_4BIT_CMD_PORT,LCD_E_PIN,DIO_PIN_LOW );
+ 79c:	40 e0       	ldi	r20, 0x00	; 0
+ 79e:	63 e0       	ldi	r22, 0x03	; 3
+ 7a0:	81 e0       	ldi	r24, 0x01	; 1
+ 7a2:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 7a6:	8f e1       	ldi	r24, 0x1F	; 31
+ 7a8:	9e e4       	ldi	r25, 0x4E	; 78
+ 7aa:	01 97       	sbiw	r24, 0x01	; 1
+ 7ac:	f1 f7       	brne	.-4      	; 0x7aa <LCD_WriteChar+0x82>
+ 7ae:	00 c0       	rjmp	.+0      	; 0x7b0 <LCD_WriteChar+0x88>
+ 7b0:	00 00       	nop
+
+	  _delay_ms(5);
+}
+ 7b2:	cf 91       	pop	r28
+ 7b4:	08 95       	ret
+
+000007b6 <LCD_WriteString>:
+
+void LCD_WriteString(uint8* str)
+{
+ 7b6:	0f 93       	push	r16
+ 7b8:	1f 93       	push	r17
+ 7ba:	cf 93       	push	r28
+ 7bc:	8c 01       	movw	r16, r24
+uint8 i=0;
+ 7be:	c0 e0       	ldi	r28, 0x00	; 0
+while(str[i] != '\0')
+ 7c0:	03 c0       	rjmp	.+6      	; 0x7c8 <LCD_WriteString+0x12>
+{
+	LCD_WriteChar(str[i]);
+ 7c2:	0e 94 94 03 	call	0x728	; 0x728 <LCD_WriteChar>
+	i++;
+ 7c6:	cf 5f       	subi	r28, 0xFF	; 255
+}
+
+void LCD_WriteString(uint8* str)
+{
+uint8 i=0;
+while(str[i] != '\0')
+ 7c8:	f8 01       	movw	r30, r16
+ 7ca:	ec 0f       	add	r30, r28
+ 7cc:	f1 1d       	adc	r31, r1
+ 7ce:	80 81       	ld	r24, Z
+ 7d0:	81 11       	cpse	r24, r1
+ 7d2:	f7 cf       	rjmp	.-18     	; 0x7c2 <LCD_WriteString+0xc>
+{
+	LCD_WriteChar(str[i]);
+	i++;
+}
+}
+ 7d4:	cf 91       	pop	r28
+ 7d6:	1f 91       	pop	r17
+ 7d8:	0f 91       	pop	r16
+ 7da:	08 95       	ret
+
+000007dc <LCD_GoTo>:
+void LCD_GoTo(uint8 row , uint8  col) // 3az akteb feh ay mkan ana 3ayzh
+{
+ 7dc:	cf 93       	push	r28
+ 7de:	df 93       	push	r29
+ 7e0:	00 d0       	rcall	.+0      	; 0x7e2 <LCD_GoTo+0x6>
+ 7e2:	cd b7       	in	r28, 0x3d	; 61
+ 7e4:	de b7       	in	r29, 0x3e	; 62
+uint8 pos[2]={0x80,0xc0};
+ 7e6:	90 e8       	ldi	r25, 0x80	; 128
+ 7e8:	99 83       	std	Y+1, r25	; 0x01
+ 7ea:	90 ec       	ldi	r25, 0xC0	; 192
+ 7ec:	9a 83       	std	Y+2, r25	; 0x02
+LCD_WriteCommand(pos[row]+col);
+ 7ee:	e1 e0       	ldi	r30, 0x01	; 1
+ 7f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 7f2:	ec 0f       	add	r30, r28
+ 7f4:	fd 1f       	adc	r31, r29
+ 7f6:	e8 0f       	add	r30, r24
+ 7f8:	f1 1d       	adc	r31, r1
+ 7fa:	80 81       	ld	r24, Z
+ 7fc:	86 0f       	add	r24, r22
+ 7fe:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+}
+ 802:	0f 90       	pop	r0
+ 804:	0f 90       	pop	r0
+ 806:	df 91       	pop	r29
+ 808:	cf 91       	pop	r28
+ 80a:	08 95       	ret
+
+0000080c <LCD_Clear>:
+void LCD_Clear(void)
+{
+LCD_WriteCommand(0x01);
+ 80c:	81 e0       	ldi	r24, 0x01	; 1
+ 80e:	0e 94 0b 03 	call	0x616	; 0x616 <LCD_WriteCommand>
+ 812:	08 95       	ret
+
+00000814 <SERVO_MOTOR_START>:
+	Function Description : set the servo by taking the valye of the duty cycle
+*/
+
+void SERVO_MOTOR_START( uint8 DUTY_CYCLE) // AT THE DUTY_CYCLE IN ORDER TO SELECT THE ANGLE FOR THE SERVO 
+{
+	TIMER_1_SET_DUTY_CYCLE(DUTY_CYCLE);
+ 814:	0e 94 fb 06 	call	0xdf6	; 0xdf6 <TIMER_1_SET_DUTY_CYCLE>
+ 818:	08 95       	ret
+
+0000081a <SERVO_MOTOR_INT>:
+{
+	// FIRST SETTING THE DIO_PIN NEEDED FOR THE OCR 
+	
+	
+	// SECOND CALLING THE PMW_INT FUCTION 
+	DIO_SetPinDir(SERVO_PORT, SERVO_PIN, DIO_PIN_OUTPUT);	
+ 81a:	41 e0       	ldi	r20, 0x01	; 1
+ 81c:	65 e0       	ldi	r22, 0x05	; 5
+ 81e:	83 e0       	ldi	r24, 0x03	; 3
+ 820:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	TIMER_1_INIT();
+ 824:	0e 94 dd 06 	call	0xdba	; 0xdba <TIMER_1_INIT>
+	//SET_BIT(DDRD, 5);
+	//SERVO_MOTOR_START(5);
+	// THIRD CALLING THE PWM_START FUCTION 
+	
+	TIMER_1_START();
+ 828:	0e 94 f1 06 	call	0xde2	; 0xde2 <TIMER_1_START>
+	SERVO_MOTOR_START(8);
+ 82c:	88 e0       	ldi	r24, 0x08	; 8
+ 82e:	0e 94 0a 04 	call	0x814	; 0x814 <SERVO_MOTOR_START>
+ 832:	08 95       	ret
+
+00000834 <ULTRASONIC_OVF_INT>:
+	Function Arguments   : void
+	Function Description : this function will be sent to isr of ovf inturrpt to perform it when trigger the sensor
+*/
+void ULTRASONIC_OVF_INT(void)
+{
+	TIMER_COUNTER++;
+ 834:	80 91 b7 00 	lds	r24, 0x00B7	; 0x8000b7 <TIMER_COUNTER>
+ 838:	8f 5f       	subi	r24, 0xFF	; 255
+ 83a:	80 93 b7 00 	sts	0x00B7, r24	; 0x8000b7 <TIMER_COUNTER>
+ 83e:	08 95       	ret
+
+00000840 <ULTRASONIC_EXT_INT>:
+	Function Description : this function will be sent to isr of ext inturrpt to perform it when trigger the sensor
+*/
+void ULTRASONIC_EXT_INT(void)
+{
+	//LCD_WriteString("CM");
+	if (SENSOR_TRIGGERED == 1)
+ 840:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <SENSOR_TRIGGERED>
+ 844:	81 30       	cpi	r24, 0x01	; 1
+ 846:	99 f5       	brne	.+102    	; 0x8ae <__stack+0x4f>
+	{
+		if (STARTING_PULSE == 0)
+ 848:	80 91 b8 00 	lds	r24, 0x00B8	; 0x8000b8 <STARTING_PULSE>
+ 84c:	81 11       	cpse	r24, r1
+ 84e:	09 c0       	rjmp	.+18     	; 0x862 <__stack+0x3>
+		{
+			TIMER_2_START();
+ 850:	0e 94 1c 07 	call	0xe38	; 0xe38 <TIMER_2_START>
+			TCNT2 = 0x00;
+ 854:	14 bc       	out	0x24, r1	; 36
+			STARTING_PULSE = 1;
+ 856:	81 e0       	ldi	r24, 0x01	; 1
+ 858:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <STARTING_PULSE>
+			TIMER_COUNTER = 0;
+ 85c:	10 92 b7 00 	sts	0x00B7, r1	; 0x8000b7 <TIMER_COUNTER>
+ 860:	08 95       	ret
+		}
+		else
+		{
+			DISTANCE = ((TIMER_COUNTER * 256) + TCNT2) * (64 / 58);
+ 862:	60 91 b7 00 	lds	r22, 0x00B7	; 0x8000b7 <TIMER_COUNTER>
+ 866:	70 e0       	ldi	r23, 0x00	; 0
+ 868:	76 2f       	mov	r23, r22
+ 86a:	66 27       	eor	r22, r22
+ 86c:	84 b5       	in	r24, 0x24	; 36
+ 86e:	68 0f       	add	r22, r24
+ 870:	71 1d       	adc	r23, r1
+ 872:	07 2e       	mov	r0, r23
+ 874:	00 0c       	add	r0, r0
+ 876:	88 0b       	sbc	r24, r24
+ 878:	99 0b       	sbc	r25, r25
+ 87a:	60 93 b3 00 	sts	0x00B3, r22	; 0x8000b3 <DISTANCE>
+ 87e:	70 93 b4 00 	sts	0x00B4, r23	; 0x8000b4 <DISTANCE+0x1>
+ 882:	80 93 b5 00 	sts	0x00B5, r24	; 0x8000b5 <DISTANCE+0x2>
+ 886:	90 93 b6 00 	sts	0x00B6, r25	; 0x8000b6 <DISTANCE+0x3>
+			if(CALLBACK_PTR_ult != 0)
+ 88a:	e0 91 b1 00 	lds	r30, 0x00B1	; 0x8000b1 <CALLBACK_PTR_ult>
+ 88e:	f0 91 b2 00 	lds	r31, 0x00B2	; 0x8000b2 <CALLBACK_PTR_ult+0x1>
+ 892:	30 97       	sbiw	r30, 0x00	; 0
+ 894:	09 f0       	breq	.+2      	; 0x898 <__stack+0x39>
+			{
+				CALLBACK_PTR_ult(DISTANCE);
+ 896:	09 95       	icall
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 898:	8a e1       	ldi	r24, 0x1A	; 26
+ 89a:	8a 95       	dec	r24
+ 89c:	f1 f7       	brne	.-4      	; 0x89a <__stack+0x3b>
+ 89e:	00 c0       	rjmp	.+0      	; 0x8a0 <__stack+0x41>
+			}
+			_delay_us(5);
+			TCNT2 = 0x00 ;
+ 8a0:	14 bc       	out	0x24, r1	; 36
+			STARTING_PULSE = 0;
+ 8a2:	10 92 b8 00 	sts	0x00B8, r1	; 0x8000b8 <STARTING_PULSE>
+			TIMER_COUNTER = 0;
+ 8a6:	10 92 b7 00 	sts	0x00B7, r1	; 0x8000b7 <TIMER_COUNTER>
+			SENSOR_TRIGGERED = 0;
+ 8aa:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <SENSOR_TRIGGERED>
+ 8ae:	08 95       	ret
+
+000008b0 <ULTRASONIC_INIT>:
+*/
+
+void ULTRASONIC_INIT(void)
+{
+	
+	DIO_SetPinDir(TRIGGER_PORT, TRIGGER, DIO_PIN_OUTPUT);
+ 8b0:	41 e0       	ldi	r20, 0x01	; 1
+ 8b2:	60 e0       	ldi	r22, 0x00	; 0
+ 8b4:	83 e0       	ldi	r24, 0x03	; 3
+ 8b6:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+
+	DIO_SetPinDir(ECHO_PORT, ECHO, DIO_PIN_INPUT);
+ 8ba:	40 e0       	ldi	r20, 0x00	; 0
+ 8bc:	62 e0       	ldi	r22, 0x02	; 2
+ 8be:	83 e0       	ldi	r24, 0x03	; 3
+ 8c0:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+
+	SET_PULL_UP_RESESTOR(ECHO_PORT, ECHO);
+ 8c4:	62 e0       	ldi	r22, 0x02	; 2
+ 8c6:	83 e0       	ldi	r24, 0x03	; 3
+ 8c8:	0e 94 e9 05 	call	0xbd2	; 0xbd2 <SET_PULL_UP_RESESTOR>
+	EXTERNAL_INT0_INIT();
+ 8cc:	0e 94 21 06 	call	0xc42	; 0xc42 <EXTERNAL_INT0_INIT>
+	TIMER_2_INIT();
+ 8d0:	0e 94 13 07 	call	0xe26	; 0xe26 <TIMER_2_INIT>
+	EXTERNAL_INIT0_SET_CALLBACK(ULTRASONIC_EXT_INT);
+ 8d4:	80 e2       	ldi	r24, 0x20	; 32
+ 8d6:	94 e0       	ldi	r25, 0x04	; 4
+ 8d8:	0e 94 39 06 	call	0xc72	; 0xc72 <EXTERNAL_INIT0_SET_CALLBACK>
+	TIMER_2_INIT_SET_CALLBACK(ULTRASONIC_OVF_INT);
+ 8dc:	8a e1       	ldi	r24, 0x1A	; 26
+ 8de:	94 e0       	ldi	r25, 0x04	; 4
+ 8e0:	0e 94 26 07 	call	0xe4c	; 0xe4c <TIMER_2_INIT_SET_CALLBACK>
+ 8e4:	08 95       	ret
+
+000008e6 <ULTRASONIC_TREGGIER>:
+	Function Arguments   : void
+	Function Description : sent pulse to trigger the ultrasonic sensor
+*/
+void ULTRASONIC_TREGGIER(void)
+{
+	if (!SENSOR_TRIGGERED)
+ 8e6:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <SENSOR_TRIGGERED>
+ 8ea:	81 11       	cpse	r24, r1
+ 8ec:	11 c0       	rjmp	.+34     	; 0x910 <ULTRASONIC_TREGGIER+0x2a>
+	{
+		DIO_SetPinVal(TRIGGER_PORT, TRIGGER, DIO_PIN_HIGH);
+ 8ee:	41 e0       	ldi	r20, 0x01	; 1
+ 8f0:	60 e0       	ldi	r22, 0x00	; 0
+ 8f2:	83 e0       	ldi	r24, 0x03	; 3
+ 8f4:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 8f8:	85 e3       	ldi	r24, 0x35	; 53
+ 8fa:	8a 95       	dec	r24
+ 8fc:	f1 f7       	brne	.-4      	; 0x8fa <ULTRASONIC_TREGGIER+0x14>
+ 8fe:	00 00       	nop
+		_delay_us(10);
+		DIO_SetPinVal(TRIGGER_PORT, TRIGGER, DIO_PIN_LOW);
+ 900:	40 e0       	ldi	r20, 0x00	; 0
+ 902:	60 e0       	ldi	r22, 0x00	; 0
+ 904:	83 e0       	ldi	r24, 0x03	; 3
+ 906:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+		SENSOR_TRIGGERED = 1 ;
+ 90a:	81 e0       	ldi	r24, 0x01	; 1
+ 90c:	80 93 b9 00 	sts	0x00B9, r24	; 0x8000b9 <SENSOR_TRIGGERED>
+ 910:	08 95       	ret
+
+00000912 <ULTRASONIC_ACTION_SET_CALLBACK>:
+	Function Arguments   : void (*COPY_FUNCTION) (uint32 DISTANCE)
+	Function Description : pass the address of the function of upper layer to perform in this layer
+*/
+void ULTRASONIC_ACTION_SET_CALLBACK( void (*COPY_FUNCTION) (uint32 DISTANCE))
+{
+	CALLBACK_PTR_ult = COPY_FUNCTION;
+ 912:	90 93 b2 00 	sts	0x00B2, r25	; 0x8000b2 <CALLBACK_PTR_ult+0x1>
+ 916:	80 93 b1 00 	sts	0x00B1, r24	; 0x8000b1 <CALLBACK_PTR_ult>
+ 91a:	08 95       	ret
+
+0000091c <ULTRASONIC_02_OVF_INT>:
+	Function Arguments   : void
+	Function Description : this function will be sent to isr of ovf inturrpt to perform it when trigger the sensor
+*/
+void ULTRASONIC_02_OVF_INT(void)
+{
+	TIMER_COUNTER_02++;
+ 91c:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <TIMER_COUNTER_02>
+ 920:	8f 5f       	subi	r24, 0xFF	; 255
+ 922:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <TIMER_COUNTER_02>
+ 926:	08 95       	ret
+
+00000928 <ULTRASONIC_02_EXT_INT>:
+*/
+
+void ULTRASONIC_02_EXT_INT(void)
+{
+	//LCD_WriteString("CM");
+	if (SENSOR_02_TRIGGERED == 1)
+ 928:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <SENSOR_02_TRIGGERED>
+ 92c:	81 30       	cpi	r24, 0x01	; 1
+ 92e:	99 f5       	brne	.+102    	; 0x996 <ULTRASONIC_02_EXT_INT+0x6e>
+	{
+		if (STARTING_02_PULSE == 0)
+ 930:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <STARTING_02_PULSE>
+ 934:	81 11       	cpse	r24, r1
+ 936:	09 c0       	rjmp	.+18     	; 0x94a <ULTRASONIC_02_EXT_INT+0x22>
+		{
+			TIMER_0_START();
+ 938:	0e 94 a5 06 	call	0xd4a	; 0xd4a <TIMER_0_START>
+			TCNT0 = 0x00;
+ 93c:	12 be       	out	0x32, r1	; 50
+			STARTING_02_PULSE = 1;
+ 93e:	81 e0       	ldi	r24, 0x01	; 1
+ 940:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <STARTING_02_PULSE>
+			TIMER_COUNTER_02 = 0;
+ 944:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <TIMER_COUNTER_02>
+ 948:	08 95       	ret
+		}
+		else
+		{
+			DISTANCE_02 = ((TIMER_COUNTER_02 * 256) + TCNT0) * (64 / 58);
+ 94a:	60 91 c0 00 	lds	r22, 0x00C0	; 0x8000c0 <TIMER_COUNTER_02>
+ 94e:	70 e0       	ldi	r23, 0x00	; 0
+ 950:	76 2f       	mov	r23, r22
+ 952:	66 27       	eor	r22, r22
+ 954:	82 b7       	in	r24, 0x32	; 50
+ 956:	68 0f       	add	r22, r24
+ 958:	71 1d       	adc	r23, r1
+ 95a:	07 2e       	mov	r0, r23
+ 95c:	00 0c       	add	r0, r0
+ 95e:	88 0b       	sbc	r24, r24
+ 960:	99 0b       	sbc	r25, r25
+ 962:	60 93 bc 00 	sts	0x00BC, r22	; 0x8000bc <DISTANCE_02>
+ 966:	70 93 bd 00 	sts	0x00BD, r23	; 0x8000bd <DISTANCE_02+0x1>
+ 96a:	80 93 be 00 	sts	0x00BE, r24	; 0x8000be <DISTANCE_02+0x2>
+ 96e:	90 93 bf 00 	sts	0x00BF, r25	; 0x8000bf <DISTANCE_02+0x3>
+			if(CALLBACK_PTR_ult_02 != 0)
+ 972:	e0 91 ba 00 	lds	r30, 0x00BA	; 0x8000ba <CALLBACK_PTR_ult_02>
+ 976:	f0 91 bb 00 	lds	r31, 0x00BB	; 0x8000bb <CALLBACK_PTR_ult_02+0x1>
+ 97a:	30 97       	sbiw	r30, 0x00	; 0
+ 97c:	09 f0       	breq	.+2      	; 0x980 <ULTRASONIC_02_EXT_INT+0x58>
+			{
+				CALLBACK_PTR_ult_02(DISTANCE_02);
+ 97e:	09 95       	icall
+ 980:	8a e1       	ldi	r24, 0x1A	; 26
+ 982:	8a 95       	dec	r24
+ 984:	f1 f7       	brne	.-4      	; 0x982 <ULTRASONIC_02_EXT_INT+0x5a>
+ 986:	00 c0       	rjmp	.+0      	; 0x988 <ULTRASONIC_02_EXT_INT+0x60>
+			}
+			_delay_us(5);
+			TCNT0 = 0x00 ;
+ 988:	12 be       	out	0x32, r1	; 50
+			STARTING_02_PULSE = 0;
+ 98a:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <STARTING_02_PULSE>
+			TIMER_COUNTER_02 = 0;
+ 98e:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <TIMER_COUNTER_02>
+			SENSOR_02_TRIGGERED = 0;
+ 992:	10 92 c2 00 	sts	0x00C2, r1	; 0x8000c2 <SENSOR_02_TRIGGERED>
+ 996:	08 95       	ret
+
+00000998 <ULTRASONIC_02_INIT>:
+*/
+
+void ULTRASONIC_02_INIT(void)
+{
+	
+	DIO_SetPinDir(TRIGGER_PORT, TRIGGER, DIO_PIN_OUTPUT);
+ 998:	41 e0       	ldi	r20, 0x01	; 1
+ 99a:	61 e0       	ldi	r22, 0x01	; 1
+ 99c:	83 e0       	ldi	r24, 0x03	; 3
+ 99e:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	
+	DIO_SetPinDir(ECHO_PORT, ECHO, DIO_PIN_INPUT);
+ 9a2:	40 e0       	ldi	r20, 0x00	; 0
+ 9a4:	63 e0       	ldi	r22, 0x03	; 3
+ 9a6:	83 e0       	ldi	r24, 0x03	; 3
+ 9a8:	0e 94 07 05 	call	0xa0e	; 0xa0e <DIO_SetPinDir>
+	
+	SET_PULL_UP_RESESTOR(ECHO_PORT, ECHO);
+ 9ac:	63 e0       	ldi	r22, 0x03	; 3
+ 9ae:	83 e0       	ldi	r24, 0x03	; 3
+ 9b0:	0e 94 e9 05 	call	0xbd2	; 0xbd2 <SET_PULL_UP_RESESTOR>
+	EXTERNAL_INT1_INIT();
+ 9b4:	0e 94 2d 06 	call	0xc5a	; 0xc5a <EXTERNAL_INT1_INIT>
+	TIMER_0_INIT();
+ 9b8:	0e 94 9c 06 	call	0xd38	; 0xd38 <TIMER_0_INIT>
+	EXTERNAL_INIT1_SET_CALLBACK(ULTRASONIC_02_EXT_INT);
+ 9bc:	84 e9       	ldi	r24, 0x94	; 148
+ 9be:	94 e0       	ldi	r25, 0x04	; 4
+ 9c0:	0e 94 67 06 	call	0xcce	; 0xcce <EXTERNAL_INIT1_SET_CALLBACK>
+	TIMER_0_INIT_SET_CALLBACK(ULTRASONIC_02_OVF_INT);
+ 9c4:	8e e8       	ldi	r24, 0x8E	; 142
+ 9c6:	94 e0       	ldi	r25, 0x04	; 4
+ 9c8:	0e 94 af 06 	call	0xd5e	; 0xd5e <TIMER_0_INIT_SET_CALLBACK>
+ 9cc:	08 95       	ret
+
+000009ce <ULTRASONIC_02_TREGGIER>:
+	Function Arguments   : void
+	Function Description : sent pulse to trigger the ultrasonic sensor
+*/
+void ULTRASONIC_02_TREGGIER(void)
+{
+	if (!SENSOR_02_TRIGGERED)
+ 9ce:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <SENSOR_02_TRIGGERED>
+ 9d2:	81 11       	cpse	r24, r1
+ 9d4:	11 c0       	rjmp	.+34     	; 0x9f8 <ULTRASONIC_02_TREGGIER+0x2a>
+	{
+		
+		DIO_SetPinVal(TRIGGER_PORT, TRIGGER, DIO_PIN_HIGH);
+ 9d6:	41 e0       	ldi	r20, 0x01	; 1
+ 9d8:	61 e0       	ldi	r22, 0x01	; 1
+ 9da:	83 e0       	ldi	r24, 0x03	; 3
+ 9dc:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+ 9e0:	85 e3       	ldi	r24, 0x35	; 53
+ 9e2:	8a 95       	dec	r24
+ 9e4:	f1 f7       	brne	.-4      	; 0x9e2 <ULTRASONIC_02_TREGGIER+0x14>
+ 9e6:	00 00       	nop
+		_delay_us(10);
+		
+		DIO_SetPinVal(TRIGGER_PORT, TRIGGER, DIO_PIN_LOW);
+ 9e8:	40 e0       	ldi	r20, 0x00	; 0
+ 9ea:	61 e0       	ldi	r22, 0x01	; 1
+ 9ec:	83 e0       	ldi	r24, 0x03	; 3
+ 9ee:	0e 94 78 05 	call	0xaf0	; 0xaf0 <DIO_SetPinVal>
+		SENSOR_02_TRIGGERED = 1 ;
+ 9f2:	81 e0       	ldi	r24, 0x01	; 1
+ 9f4:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <SENSOR_02_TRIGGERED>
+ 9f8:	08 95       	ret
+
+000009fa <ULTRASONIC_02_ACTION_SET_CALLBACK>:
+	Function Arguments   : void (*COPY_FUNCTION) (uint32 DISTANCE)
+	Function Description : pass the address of the function of upper layer to perform in this layer
+*/
+void ULTRASONIC_02_ACTION_SET_CALLBACK( void (*COPY_FUNCTION) (uint32 DISTANCE))
+{
+	CALLBACK_PTR_ult_02 = COPY_FUNCTION;
+ 9fa:	90 93 bb 00 	sts	0x00BB, r25	; 0x8000bb <CALLBACK_PTR_ult_02+0x1>
+ 9fe:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <CALLBACK_PTR_ult_02>
+ a02:	08 95       	ret
+
+00000a04 <main>:
+
+
+int main(void)
+{
+
+	VEHICLE_INIT();
+ a04:	0e 94 49 00 	call	0x92	; 0x92 <VEHICLE_INIT>
+
+	while (1)
+	{
+		VEHICLE_MANEGMENT();
+ a08:	0e 94 41 02 	call	0x482	; 0x482 <VEHICLE_MANEGMENT>
+ a0c:	fd cf       	rjmp	.-6      	; 0xa08 <main+0x4>
+
+00000a0e <DIO_SetPinDir>:
+					case DIO_PORTC:
+					TOGGLE_BIT(PORTC,Pin);
+						break;
+
+					case DIO_PORTD:
+					TOGGLE_BIT(PORTD,Pin);
+ a0e:	44 23       	and	r20, r20
+ a10:	b9 f1       	breq	.+110    	; 0xa80 <DIO_SetPinDir+0x72>
+ a12:	41 30       	cpi	r20, 0x01	; 1
+ a14:	09 f0       	breq	.+2      	; 0xa18 <DIO_SetPinDir+0xa>
+ a16:	6b c0       	rjmp	.+214    	; 0xaee <DIO_SetPinDir+0xe0>
+ a18:	81 30       	cpi	r24, 0x01	; 1
+ a1a:	89 f0       	breq	.+34     	; 0xa3e <DIO_SetPinDir+0x30>
+ a1c:	28 f0       	brcs	.+10     	; 0xa28 <DIO_SetPinDir+0x1a>
+ a1e:	82 30       	cpi	r24, 0x02	; 2
+ a20:	c9 f0       	breq	.+50     	; 0xa54 <DIO_SetPinDir+0x46>
+ a22:	83 30       	cpi	r24, 0x03	; 3
+ a24:	11 f1       	breq	.+68     	; 0xa6a <DIO_SetPinDir+0x5c>
+ a26:	08 95       	ret
+ a28:	81 e0       	ldi	r24, 0x01	; 1
+ a2a:	90 e0       	ldi	r25, 0x00	; 0
+ a2c:	02 c0       	rjmp	.+4      	; 0xa32 <DIO_SetPinDir+0x24>
+ a2e:	88 0f       	add	r24, r24
+ a30:	99 1f       	adc	r25, r25
+ a32:	6a 95       	dec	r22
+ a34:	e2 f7       	brpl	.-8      	; 0xa2e <DIO_SetPinDir+0x20>
+ a36:	9a b3       	in	r25, 0x1a	; 26
+ a38:	89 2b       	or	r24, r25
+ a3a:	8a bb       	out	0x1a, r24	; 26
+ a3c:	08 95       	ret
+ a3e:	81 e0       	ldi	r24, 0x01	; 1
+ a40:	90 e0       	ldi	r25, 0x00	; 0
+ a42:	02 c0       	rjmp	.+4      	; 0xa48 <DIO_SetPinDir+0x3a>
+ a44:	88 0f       	add	r24, r24
+ a46:	99 1f       	adc	r25, r25
+ a48:	6a 95       	dec	r22
+ a4a:	e2 f7       	brpl	.-8      	; 0xa44 <DIO_SetPinDir+0x36>
+ a4c:	97 b3       	in	r25, 0x17	; 23
+ a4e:	89 2b       	or	r24, r25
+ a50:	87 bb       	out	0x17, r24	; 23
+ a52:	08 95       	ret
+ a54:	81 e0       	ldi	r24, 0x01	; 1
+ a56:	90 e0       	ldi	r25, 0x00	; 0
+ a58:	02 c0       	rjmp	.+4      	; 0xa5e <DIO_SetPinDir+0x50>
+ a5a:	88 0f       	add	r24, r24
+ a5c:	99 1f       	adc	r25, r25
+ a5e:	6a 95       	dec	r22
+ a60:	e2 f7       	brpl	.-8      	; 0xa5a <DIO_SetPinDir+0x4c>
+ a62:	94 b3       	in	r25, 0x14	; 20
+ a64:	89 2b       	or	r24, r25
+ a66:	84 bb       	out	0x14, r24	; 20
+ a68:	08 95       	ret
+ a6a:	81 e0       	ldi	r24, 0x01	; 1
+ a6c:	90 e0       	ldi	r25, 0x00	; 0
+ a6e:	02 c0       	rjmp	.+4      	; 0xa74 <DIO_SetPinDir+0x66>
+ a70:	88 0f       	add	r24, r24
+ a72:	99 1f       	adc	r25, r25
+ a74:	6a 95       	dec	r22
+ a76:	e2 f7       	brpl	.-8      	; 0xa70 <DIO_SetPinDir+0x62>
+ a78:	91 b3       	in	r25, 0x11	; 17
+ a7a:	89 2b       	or	r24, r25
+ a7c:	81 bb       	out	0x11, r24	; 17
+ a7e:	08 95       	ret
+ a80:	81 30       	cpi	r24, 0x01	; 1
+ a82:	91 f0       	breq	.+36     	; 0xaa8 <DIO_SetPinDir+0x9a>
+ a84:	28 f0       	brcs	.+10     	; 0xa90 <DIO_SetPinDir+0x82>
+ a86:	82 30       	cpi	r24, 0x02	; 2
+ a88:	d9 f0       	breq	.+54     	; 0xac0 <DIO_SetPinDir+0xb2>
+ a8a:	83 30       	cpi	r24, 0x03	; 3
+ a8c:	29 f1       	breq	.+74     	; 0xad8 <DIO_SetPinDir+0xca>
+ a8e:	08 95       	ret
+ a90:	81 e0       	ldi	r24, 0x01	; 1
+ a92:	90 e0       	ldi	r25, 0x00	; 0
+ a94:	02 c0       	rjmp	.+4      	; 0xa9a <DIO_SetPinDir+0x8c>
+ a96:	88 0f       	add	r24, r24
+ a98:	99 1f       	adc	r25, r25
+ a9a:	6a 95       	dec	r22
+ a9c:	e2 f7       	brpl	.-8      	; 0xa96 <DIO_SetPinDir+0x88>
+ a9e:	80 95       	com	r24
+ aa0:	9a b3       	in	r25, 0x1a	; 26
+ aa2:	89 23       	and	r24, r25
+ aa4:	8a bb       	out	0x1a, r24	; 26
+ aa6:	08 95       	ret
+ aa8:	81 e0       	ldi	r24, 0x01	; 1
+ aaa:	90 e0       	ldi	r25, 0x00	; 0
+ aac:	02 c0       	rjmp	.+4      	; 0xab2 <DIO_SetPinDir+0xa4>
+ aae:	88 0f       	add	r24, r24
+ ab0:	99 1f       	adc	r25, r25
+ ab2:	6a 95       	dec	r22
+ ab4:	e2 f7       	brpl	.-8      	; 0xaae <DIO_SetPinDir+0xa0>
+ ab6:	80 95       	com	r24
+ ab8:	97 b3       	in	r25, 0x17	; 23
+ aba:	89 23       	and	r24, r25
+ abc:	87 bb       	out	0x17, r24	; 23
+ abe:	08 95       	ret
+ ac0:	81 e0       	ldi	r24, 0x01	; 1
+ ac2:	90 e0       	ldi	r25, 0x00	; 0
+ ac4:	02 c0       	rjmp	.+4      	; 0xaca <DIO_SetPinDir+0xbc>
+ ac6:	88 0f       	add	r24, r24
+ ac8:	99 1f       	adc	r25, r25
+ aca:	6a 95       	dec	r22
+ acc:	e2 f7       	brpl	.-8      	; 0xac6 <DIO_SetPinDir+0xb8>
+ ace:	80 95       	com	r24
+ ad0:	94 b3       	in	r25, 0x14	; 20
+ ad2:	89 23       	and	r24, r25
+ ad4:	84 bb       	out	0x14, r24	; 20
+ ad6:	08 95       	ret
+ ad8:	81 e0       	ldi	r24, 0x01	; 1
+ ada:	90 e0       	ldi	r25, 0x00	; 0
+ adc:	02 c0       	rjmp	.+4      	; 0xae2 <DIO_SetPinDir+0xd4>
+ ade:	88 0f       	add	r24, r24
+ ae0:	99 1f       	adc	r25, r25
+ ae2:	6a 95       	dec	r22
+ ae4:	e2 f7       	brpl	.-8      	; 0xade <DIO_SetPinDir+0xd0>
+ ae6:	80 95       	com	r24
+ ae8:	91 b3       	in	r25, 0x11	; 17
+ aea:	89 23       	and	r24, r25
+ aec:	81 bb       	out	0x11, r24	; 17
+ aee:	08 95       	ret
+
+00000af0 <DIO_SetPinVal>:
+ af0:	44 23       	and	r20, r20
+ af2:	b9 f1       	breq	.+110    	; 0xb62 <DIO_SetPinVal+0x72>
+ af4:	41 30       	cpi	r20, 0x01	; 1
+ af6:	09 f0       	breq	.+2      	; 0xafa <DIO_SetPinVal+0xa>
+ af8:	6b c0       	rjmp	.+214    	; 0xbd0 <DIO_SetPinVal+0xe0>
+ afa:	81 30       	cpi	r24, 0x01	; 1
+ afc:	89 f0       	breq	.+34     	; 0xb20 <DIO_SetPinVal+0x30>
+ afe:	28 f0       	brcs	.+10     	; 0xb0a <DIO_SetPinVal+0x1a>
+ b00:	82 30       	cpi	r24, 0x02	; 2
+ b02:	c9 f0       	breq	.+50     	; 0xb36 <DIO_SetPinVal+0x46>
+ b04:	83 30       	cpi	r24, 0x03	; 3
+ b06:	11 f1       	breq	.+68     	; 0xb4c <DIO_SetPinVal+0x5c>
+ b08:	08 95       	ret
+ b0a:	81 e0       	ldi	r24, 0x01	; 1
+ b0c:	90 e0       	ldi	r25, 0x00	; 0
+ b0e:	02 c0       	rjmp	.+4      	; 0xb14 <DIO_SetPinVal+0x24>
+ b10:	88 0f       	add	r24, r24
+ b12:	99 1f       	adc	r25, r25
+ b14:	6a 95       	dec	r22
+ b16:	e2 f7       	brpl	.-8      	; 0xb10 <DIO_SetPinVal+0x20>
+ b18:	9b b3       	in	r25, 0x1b	; 27
+ b1a:	89 2b       	or	r24, r25
+ b1c:	8b bb       	out	0x1b, r24	; 27
+ b1e:	08 95       	ret
+ b20:	81 e0       	ldi	r24, 0x01	; 1
+ b22:	90 e0       	ldi	r25, 0x00	; 0
+ b24:	02 c0       	rjmp	.+4      	; 0xb2a <DIO_SetPinVal+0x3a>
+ b26:	88 0f       	add	r24, r24
+ b28:	99 1f       	adc	r25, r25
+ b2a:	6a 95       	dec	r22
+ b2c:	e2 f7       	brpl	.-8      	; 0xb26 <DIO_SetPinVal+0x36>
+ b2e:	98 b3       	in	r25, 0x18	; 24
+ b30:	89 2b       	or	r24, r25
+ b32:	88 bb       	out	0x18, r24	; 24
+ b34:	08 95       	ret
+ b36:	81 e0       	ldi	r24, 0x01	; 1
+ b38:	90 e0       	ldi	r25, 0x00	; 0
+ b3a:	02 c0       	rjmp	.+4      	; 0xb40 <DIO_SetPinVal+0x50>
+ b3c:	88 0f       	add	r24, r24
+ b3e:	99 1f       	adc	r25, r25
+ b40:	6a 95       	dec	r22
+ b42:	e2 f7       	brpl	.-8      	; 0xb3c <DIO_SetPinVal+0x4c>
+ b44:	95 b3       	in	r25, 0x15	; 21
+ b46:	89 2b       	or	r24, r25
+ b48:	85 bb       	out	0x15, r24	; 21
+ b4a:	08 95       	ret
+ b4c:	81 e0       	ldi	r24, 0x01	; 1
+ b4e:	90 e0       	ldi	r25, 0x00	; 0
+ b50:	02 c0       	rjmp	.+4      	; 0xb56 <DIO_SetPinVal+0x66>
+ b52:	88 0f       	add	r24, r24
+ b54:	99 1f       	adc	r25, r25
+ b56:	6a 95       	dec	r22
+ b58:	e2 f7       	brpl	.-8      	; 0xb52 <DIO_SetPinVal+0x62>
+ b5a:	92 b3       	in	r25, 0x12	; 18
+ b5c:	89 2b       	or	r24, r25
+ b5e:	82 bb       	out	0x12, r24	; 18
+ b60:	08 95       	ret
+ b62:	81 30       	cpi	r24, 0x01	; 1
+ b64:	91 f0       	breq	.+36     	; 0xb8a <DIO_SetPinVal+0x9a>
+ b66:	28 f0       	brcs	.+10     	; 0xb72 <DIO_SetPinVal+0x82>
+ b68:	82 30       	cpi	r24, 0x02	; 2
+ b6a:	d9 f0       	breq	.+54     	; 0xba2 <DIO_SetPinVal+0xb2>
+ b6c:	83 30       	cpi	r24, 0x03	; 3
+ b6e:	29 f1       	breq	.+74     	; 0xbba <DIO_SetPinVal+0xca>
+ b70:	08 95       	ret
+ b72:	81 e0       	ldi	r24, 0x01	; 1
+ b74:	90 e0       	ldi	r25, 0x00	; 0
+ b76:	02 c0       	rjmp	.+4      	; 0xb7c <DIO_SetPinVal+0x8c>
+ b78:	88 0f       	add	r24, r24
+ b7a:	99 1f       	adc	r25, r25
+ b7c:	6a 95       	dec	r22
+ b7e:	e2 f7       	brpl	.-8      	; 0xb78 <DIO_SetPinVal+0x88>
+ b80:	80 95       	com	r24
+ b82:	9b b3       	in	r25, 0x1b	; 27
+ b84:	89 23       	and	r24, r25
+ b86:	8b bb       	out	0x1b, r24	; 27
+ b88:	08 95       	ret
+ b8a:	81 e0       	ldi	r24, 0x01	; 1
+ b8c:	90 e0       	ldi	r25, 0x00	; 0
+ b8e:	02 c0       	rjmp	.+4      	; 0xb94 <DIO_SetPinVal+0xa4>
+ b90:	88 0f       	add	r24, r24
+ b92:	99 1f       	adc	r25, r25
+ b94:	6a 95       	dec	r22
+ b96:	e2 f7       	brpl	.-8      	; 0xb90 <DIO_SetPinVal+0xa0>
+ b98:	80 95       	com	r24
+ b9a:	98 b3       	in	r25, 0x18	; 24
+ b9c:	89 23       	and	r24, r25
+ b9e:	88 bb       	out	0x18, r24	; 24
+ ba0:	08 95       	ret
+ ba2:	81 e0       	ldi	r24, 0x01	; 1
+ ba4:	90 e0       	ldi	r25, 0x00	; 0
+ ba6:	02 c0       	rjmp	.+4      	; 0xbac <DIO_SetPinVal+0xbc>
+ ba8:	88 0f       	add	r24, r24
+ baa:	99 1f       	adc	r25, r25
+ bac:	6a 95       	dec	r22
+ bae:	e2 f7       	brpl	.-8      	; 0xba8 <DIO_SetPinVal+0xb8>
+ bb0:	80 95       	com	r24
+ bb2:	95 b3       	in	r25, 0x15	; 21
+ bb4:	89 23       	and	r24, r25
+ bb6:	85 bb       	out	0x15, r24	; 21
+ bb8:	08 95       	ret
+ bba:	81 e0       	ldi	r24, 0x01	; 1
+ bbc:	90 e0       	ldi	r25, 0x00	; 0
+ bbe:	02 c0       	rjmp	.+4      	; 0xbc4 <DIO_SetPinVal+0xd4>
+ bc0:	88 0f       	add	r24, r24
+ bc2:	99 1f       	adc	r25, r25
+ bc4:	6a 95       	dec	r22
+ bc6:	e2 f7       	brpl	.-8      	; 0xbc0 <DIO_SetPinVal+0xd0>
+ bc8:	80 95       	com	r24
+ bca:	92 b3       	in	r25, 0x12	; 18
+ bcc:	89 23       	and	r24, r25
+ bce:	82 bb       	out	0x12, r24	; 18
+ bd0:	08 95       	ret
+
+00000bd2 <SET_PULL_UP_RESESTOR>:
+	Function Description : set pull_up_resestor of pin
+*/
+
+void SET_PULL_UP_RESESTOR(uint8	DIO_PORT ,uint8 DIO_PIN)
+{
+	switch (DIO_PORT)
+ bd2:	81 30       	cpi	r24, 0x01	; 1
+ bd4:	89 f0       	breq	.+34     	; 0xbf8 <SET_PULL_UP_RESESTOR+0x26>
+ bd6:	28 f0       	brcs	.+10     	; 0xbe2 <SET_PULL_UP_RESESTOR+0x10>
+ bd8:	82 30       	cpi	r24, 0x02	; 2
+ bda:	c9 f0       	breq	.+50     	; 0xc0e <SET_PULL_UP_RESESTOR+0x3c>
+ bdc:	83 30       	cpi	r24, 0x03	; 3
+ bde:	11 f1       	breq	.+68     	; 0xc24 <SET_PULL_UP_RESESTOR+0x52>
+ be0:	08 95       	ret
+	{
+		case DIO_PORTA:
+		SET_BIT(PORTA ,DIO_PIN);
+ be2:	81 e0       	ldi	r24, 0x01	; 1
+ be4:	90 e0       	ldi	r25, 0x00	; 0
+ be6:	02 c0       	rjmp	.+4      	; 0xbec <SET_PULL_UP_RESESTOR+0x1a>
+ be8:	88 0f       	add	r24, r24
+ bea:	99 1f       	adc	r25, r25
+ bec:	6a 95       	dec	r22
+ bee:	e2 f7       	brpl	.-8      	; 0xbe8 <SET_PULL_UP_RESESTOR+0x16>
+ bf0:	9b b3       	in	r25, 0x1b	; 27
+ bf2:	89 2b       	or	r24, r25
+ bf4:	8b bb       	out	0x1b, r24	; 27
+		break;
+ bf6:	08 95       	ret
+		
+		case DIO_PORTB:
+		SET_BIT(PORTB ,DIO_PIN);
+ bf8:	81 e0       	ldi	r24, 0x01	; 1
+ bfa:	90 e0       	ldi	r25, 0x00	; 0
+ bfc:	02 c0       	rjmp	.+4      	; 0xc02 <SET_PULL_UP_RESESTOR+0x30>
+ bfe:	88 0f       	add	r24, r24
+ c00:	99 1f       	adc	r25, r25
+ c02:	6a 95       	dec	r22
+ c04:	e2 f7       	brpl	.-8      	; 0xbfe <SET_PULL_UP_RESESTOR+0x2c>
+ c06:	98 b3       	in	r25, 0x18	; 24
+ c08:	89 2b       	or	r24, r25
+ c0a:	88 bb       	out	0x18, r24	; 24
+		break;
+ c0c:	08 95       	ret
+		
+		case DIO_PORTC:
+		SET_BIT(PORTC ,DIO_PIN);
+ c0e:	81 e0       	ldi	r24, 0x01	; 1
+ c10:	90 e0       	ldi	r25, 0x00	; 0
+ c12:	02 c0       	rjmp	.+4      	; 0xc18 <SET_PULL_UP_RESESTOR+0x46>
+ c14:	88 0f       	add	r24, r24
+ c16:	99 1f       	adc	r25, r25
+ c18:	6a 95       	dec	r22
+ c1a:	e2 f7       	brpl	.-8      	; 0xc14 <SET_PULL_UP_RESESTOR+0x42>
+ c1c:	95 b3       	in	r25, 0x15	; 21
+ c1e:	89 2b       	or	r24, r25
+ c20:	85 bb       	out	0x15, r24	; 21
+		break;
+ c22:	08 95       	ret
+		
+		case DIO_PORTD:
+		SET_BIT(PORTD ,DIO_PIN);
+ c24:	81 e0       	ldi	r24, 0x01	; 1
+ c26:	90 e0       	ldi	r25, 0x00	; 0
+ c28:	02 c0       	rjmp	.+4      	; 0xc2e <SET_PULL_UP_RESESTOR+0x5c>
+ c2a:	88 0f       	add	r24, r24
+ c2c:	99 1f       	adc	r25, r25
+ c2e:	6a 95       	dec	r22
+ c30:	e2 f7       	brpl	.-8      	; 0xc2a <SET_PULL_UP_RESESTOR+0x58>
+ c32:	92 b3       	in	r25, 0x12	; 18
+ c34:	89 2b       	or	r24, r25
+ c36:	82 bb       	out	0x12, r24	; 18
+ c38:	08 95       	ret
+
+00000c3a <SET_GLOBAL_INT>:
+void EXTERNAL_INT2_INIT(void)
+{
+	SET_GLOBAL_INT();
+	SET_BIT(GICR, 5);
+	#if		EXTERNAL_INT2_TRIGGER_MODE == FALLING_EDGE_MODE
+	CLR_BIT(MCUCSR, 6);
+ c3a:	8f b7       	in	r24, 0x3f	; 63
+ c3c:	80 68       	ori	r24, 0x80	; 128
+ c3e:	8f bf       	out	0x3f, r24	; 63
+ c40:	08 95       	ret
+
+00000c42 <EXTERNAL_INT0_INIT>:
+ c42:	0e 94 1d 06 	call	0xc3a	; 0xc3a <SET_GLOBAL_INT>
+ c46:	8b b7       	in	r24, 0x3b	; 59
+ c48:	80 64       	ori	r24, 0x40	; 64
+ c4a:	8b bf       	out	0x3b, r24	; 59
+ c4c:	85 b7       	in	r24, 0x35	; 53
+ c4e:	81 60       	ori	r24, 0x01	; 1
+ c50:	85 bf       	out	0x35, r24	; 53
+ c52:	85 b7       	in	r24, 0x35	; 53
+ c54:	8d 7f       	andi	r24, 0xFD	; 253
+ c56:	85 bf       	out	0x35, r24	; 53
+ c58:	08 95       	ret
+
+00000c5a <EXTERNAL_INT1_INIT>:
+ c5a:	0e 94 1d 06 	call	0xc3a	; 0xc3a <SET_GLOBAL_INT>
+ c5e:	8b b7       	in	r24, 0x3b	; 59
+ c60:	80 68       	ori	r24, 0x80	; 128
+ c62:	8b bf       	out	0x3b, r24	; 59
+ c64:	85 b7       	in	r24, 0x35	; 53
+ c66:	84 60       	ori	r24, 0x04	; 4
+ c68:	85 bf       	out	0x35, r24	; 53
+ c6a:	85 b7       	in	r24, 0x35	; 53
+ c6c:	87 7f       	andi	r24, 0xF7	; 247
+ c6e:	85 bf       	out	0x35, r24	; 53
+ c70:	08 95       	ret
+
+00000c72 <EXTERNAL_INIT0_SET_CALLBACK>:
+	Function Description : pass the address of the function of upper layer to perform in this layer
+*/
+
+void EXTERNAL_INIT0_SET_CALLBACK( void (*COPY_FUNCTION) (void))
+{
+	CALLBACK_PTR_INT_0 = COPY_FUNCTION;
+ c72:	90 93 c6 00 	sts	0x00C6, r25	; 0x8000c6 <CALLBACK_PTR_INT_0+0x1>
+ c76:	80 93 c5 00 	sts	0x00C5, r24	; 0x8000c5 <CALLBACK_PTR_INT_0>
+ c7a:	08 95       	ret
+
+00000c7c <__vector_1>:
+	
+}
+// int service routine of ext int 0
+ISR(INT0_vect)
+{
+ c7c:	1f 92       	push	r1
+ c7e:	0f 92       	push	r0
+ c80:	0f b6       	in	r0, 0x3f	; 63
+ c82:	0f 92       	push	r0
+ c84:	11 24       	eor	r1, r1
+ c86:	2f 93       	push	r18
+ c88:	3f 93       	push	r19
+ c8a:	4f 93       	push	r20
+ c8c:	5f 93       	push	r21
+ c8e:	6f 93       	push	r22
+ c90:	7f 93       	push	r23
+ c92:	8f 93       	push	r24
+ c94:	9f 93       	push	r25
+ c96:	af 93       	push	r26
+ c98:	bf 93       	push	r27
+ c9a:	ef 93       	push	r30
+ c9c:	ff 93       	push	r31
+	if(CALLBACK_PTR_INT_0 != 0)
+ c9e:	e0 91 c5 00 	lds	r30, 0x00C5	; 0x8000c5 <CALLBACK_PTR_INT_0>
+ ca2:	f0 91 c6 00 	lds	r31, 0x00C6	; 0x8000c6 <CALLBACK_PTR_INT_0+0x1>
+ ca6:	30 97       	sbiw	r30, 0x00	; 0
+ ca8:	09 f0       	breq	.+2      	; 0xcac <__vector_1+0x30>
+	{
+		CALLBACK_PTR_INT_0();
+ caa:	09 95       	icall
+	}
+}
+ cac:	ff 91       	pop	r31
+ cae:	ef 91       	pop	r30
+ cb0:	bf 91       	pop	r27
+ cb2:	af 91       	pop	r26
+ cb4:	9f 91       	pop	r25
+ cb6:	8f 91       	pop	r24
+ cb8:	7f 91       	pop	r23
+ cba:	6f 91       	pop	r22
+ cbc:	5f 91       	pop	r21
+ cbe:	4f 91       	pop	r20
+ cc0:	3f 91       	pop	r19
+ cc2:	2f 91       	pop	r18
+ cc4:	0f 90       	pop	r0
+ cc6:	0f be       	out	0x3f, r0	; 63
+ cc8:	0f 90       	pop	r0
+ cca:	1f 90       	pop	r1
+ ccc:	18 95       	reti
+
+00000cce <EXTERNAL_INIT1_SET_CALLBACK>:
+	Function Description : pass the address of the function of upper layer to perform in this layer
+*/
+
+void EXTERNAL_INIT1_SET_CALLBACK( void (*COPY_FUNCTION) (void))
+{
+	CALLBACK_PTR_INT_1 = COPY_FUNCTION;
+ cce:	90 93 c4 00 	sts	0x00C4, r25	; 0x8000c4 <CALLBACK_PTR_INT_1+0x1>
+ cd2:	80 93 c3 00 	sts	0x00C3, r24	; 0x8000c3 <CALLBACK_PTR_INT_1>
+ cd6:	08 95       	ret
+
+00000cd8 <__vector_2>:
+
+
+// int service routine of ext int 1
+
+ISR(INT1_vect)
+{
+ cd8:	1f 92       	push	r1
+ cda:	0f 92       	push	r0
+ cdc:	0f b6       	in	r0, 0x3f	; 63
+ cde:	0f 92       	push	r0
+ ce0:	11 24       	eor	r1, r1
+ ce2:	2f 93       	push	r18
+ ce4:	3f 93       	push	r19
+ ce6:	4f 93       	push	r20
+ ce8:	5f 93       	push	r21
+ cea:	6f 93       	push	r22
+ cec:	7f 93       	push	r23
+ cee:	8f 93       	push	r24
+ cf0:	9f 93       	push	r25
+ cf2:	af 93       	push	r26
+ cf4:	bf 93       	push	r27
+ cf6:	ef 93       	push	r30
+ cf8:	ff 93       	push	r31
+	if(CALLBACK_PTR_INT_1 != 0)
+ cfa:	e0 91 c3 00 	lds	r30, 0x00C3	; 0x8000c3 <CALLBACK_PTR_INT_1>
+ cfe:	f0 91 c4 00 	lds	r31, 0x00C4	; 0x8000c4 <CALLBACK_PTR_INT_1+0x1>
+ d02:	30 97       	sbiw	r30, 0x00	; 0
+ d04:	09 f0       	breq	.+2      	; 0xd08 <__vector_2+0x30>
+	{
+		CALLBACK_PTR_INT_1();
+ d06:	09 95       	icall
+	}
+ d08:	ff 91       	pop	r31
+ d0a:	ef 91       	pop	r30
+ d0c:	bf 91       	pop	r27
+ d0e:	af 91       	pop	r26
+ d10:	9f 91       	pop	r25
+ d12:	8f 91       	pop	r24
+ d14:	7f 91       	pop	r23
+ d16:	6f 91       	pop	r22
+ d18:	5f 91       	pop	r21
+ d1a:	4f 91       	pop	r20
+ d1c:	3f 91       	pop	r19
+ d1e:	2f 91       	pop	r18
+ d20:	0f 90       	pop	r0
+ d22:	0f be       	out	0x3f, r0	; 63
+ d24:	0f 90       	pop	r0
+ d26:	1f 90       	pop	r1
+ d28:	18 95       	reti
+
+00000d2a <TIMER_0_INT_STATE>:
+	Function Arguments   : uint8 duty_cycle
+	Function Description : set duty_cycle value of pwm mode
+*/
+
+void TIMER_0_PWM_SET_DUTY_CYCLE(uint8 Duty_cycle)
+{
+ d2a:	8f b7       	in	r24, 0x3f	; 63
+ d2c:	80 68       	ori	r24, 0x80	; 128
+ d2e:	8f bf       	out	0x3f, r24	; 63
+ d30:	89 b7       	in	r24, 0x39	; 57
+ d32:	81 60       	ori	r24, 0x01	; 1
+ d34:	89 bf       	out	0x39, r24	; 57
+ d36:	08 95       	ret
+
+00000d38 <TIMER_0_INIT>:
+ d38:	83 b7       	in	r24, 0x33	; 51
+ d3a:	87 7f       	andi	r24, 0xF7	; 247
+ d3c:	83 bf       	out	0x33, r24	; 51
+ d3e:	83 b7       	in	r24, 0x33	; 51
+ d40:	8f 7b       	andi	r24, 0xBF	; 191
+ d42:	83 bf       	out	0x33, r24	; 51
+ d44:	0e 94 95 06 	call	0xd2a	; 0xd2a <TIMER_0_INT_STATE>
+ d48:	08 95       	ret
+
+00000d4a <TIMER_0_START>:
+ d4a:	83 b7       	in	r24, 0x33	; 51
+ d4c:	81 60       	ori	r24, 0x01	; 1
+ d4e:	83 bf       	out	0x33, r24	; 51
+ d50:	83 b7       	in	r24, 0x33	; 51
+ d52:	8d 7f       	andi	r24, 0xFD	; 253
+ d54:	83 bf       	out	0x33, r24	; 51
+ d56:	83 b7       	in	r24, 0x33	; 51
+ d58:	84 60       	ori	r24, 0x04	; 4
+ d5a:	83 bf       	out	0x33, r24	; 51
+ d5c:	08 95       	ret
+
+00000d5e <TIMER_0_INIT_SET_CALLBACK>:
+	Function Description : pass the address of the function of upper layer to perform in this layer
+*/
+
+void TIMER_0_INIT_SET_CALLBACK( void (*COPY_FUNCTION) (void))
+{
+	CALLBACK_PTTR_TIMER_0 = COPY_FUNCTION;
+ d5e:	90 93 c8 00 	sts	0x00C8, r25	; 0x8000c8 <CALLBACK_PTTR_TIMER_0+0x1>
+ d62:	80 93 c7 00 	sts	0x00C7, r24	; 0x8000c7 <CALLBACK_PTTR_TIMER_0>
+ d66:	08 95       	ret
+
+00000d68 <__vector_11>:
+}
+
+
+// inturrpt service routine of timer0 ovf
+ISR(TIMER0_OVF_vect)
+{
+ d68:	1f 92       	push	r1
+ d6a:	0f 92       	push	r0
+ d6c:	0f b6       	in	r0, 0x3f	; 63
+ d6e:	0f 92       	push	r0
+ d70:	11 24       	eor	r1, r1
+ d72:	2f 93       	push	r18
+ d74:	3f 93       	push	r19
+ d76:	4f 93       	push	r20
+ d78:	5f 93       	push	r21
+ d7a:	6f 93       	push	r22
+ d7c:	7f 93       	push	r23
+ d7e:	8f 93       	push	r24
+ d80:	9f 93       	push	r25
+ d82:	af 93       	push	r26
+ d84:	bf 93       	push	r27
+ d86:	ef 93       	push	r30
+ d88:	ff 93       	push	r31
+	if(CALLBACK_PTTR_TIMER_0 != 0)
+ d8a:	e0 91 c7 00 	lds	r30, 0x00C7	; 0x8000c7 <CALLBACK_PTTR_TIMER_0>
+ d8e:	f0 91 c8 00 	lds	r31, 0x00C8	; 0x8000c8 <CALLBACK_PTTR_TIMER_0+0x1>
+ d92:	30 97       	sbiw	r30, 0x00	; 0
+ d94:	09 f0       	breq	.+2      	; 0xd98 <__vector_11+0x30>
+	{
+		CALLBACK_PTTR_TIMER_0();
+ d96:	09 95       	icall
+	}
+ d98:	ff 91       	pop	r31
+ d9a:	ef 91       	pop	r30
+ d9c:	bf 91       	pop	r27
+ d9e:	af 91       	pop	r26
+ da0:	9f 91       	pop	r25
+ da2:	8f 91       	pop	r24
+ da4:	7f 91       	pop	r23
+ da6:	6f 91       	pop	r22
+ da8:	5f 91       	pop	r21
+ daa:	4f 91       	pop	r20
+ dac:	3f 91       	pop	r19
+ dae:	2f 91       	pop	r18
+ db0:	0f 90       	pop	r0
+ db2:	0f be       	out	0x3f, r0	; 63
+ db4:	0f 90       	pop	r0
+ db6:	1f 90       	pop	r1
+ db8:	18 95       	reti
+
+00000dba <TIMER_1_INIT>:
+
+void TIMER_1_STOP(void)
+{
+	CLR_BIT ( TCCR1B,0);
+	CLR_BIT ( TCCR1B,1);
+	CLR_BIT ( TCCR1B,2);
+ dba:	8f b5       	in	r24, 0x2f	; 47
+ dbc:	8e 7f       	andi	r24, 0xFE	; 254
+ dbe:	8f bd       	out	0x2f, r24	; 47
+ dc0:	8f b5       	in	r24, 0x2f	; 47
+ dc2:	82 60       	ori	r24, 0x02	; 2
+ dc4:	8f bd       	out	0x2f, r24	; 47
+ dc6:	8e b5       	in	r24, 0x2e	; 46
+ dc8:	88 60       	ori	r24, 0x08	; 8
+ dca:	8e bd       	out	0x2e, r24	; 46
+ dcc:	8e b5       	in	r24, 0x2e	; 46
+ dce:	80 61       	ori	r24, 0x10	; 16
+ dd0:	8e bd       	out	0x2e, r24	; 46
+ dd2:	8f b5       	in	r24, 0x2f	; 47
+ dd4:	80 68       	ori	r24, 0x80	; 128
+ dd6:	8f bd       	out	0x2f, r24	; 47
+ dd8:	82 ee       	ldi	r24, 0xE2	; 226
+ dda:	94 e0       	ldi	r25, 0x04	; 4
+ ddc:	97 bd       	out	0x27, r25	; 39
+ dde:	86 bd       	out	0x26, r24	; 38
+ de0:	08 95       	ret
+
+00000de2 <TIMER_1_START>:
+ de2:	8e b5       	in	r24, 0x2e	; 46
+ de4:	8e 7f       	andi	r24, 0xFE	; 254
+ de6:	8e bd       	out	0x2e, r24	; 46
+ de8:	8e b5       	in	r24, 0x2e	; 46
+ dea:	8d 7f       	andi	r24, 0xFD	; 253
+ dec:	8e bd       	out	0x2e, r24	; 46
+ dee:	8e b5       	in	r24, 0x2e	; 46
+ df0:	84 60       	ori	r24, 0x04	; 4
+ df2:	8e bd       	out	0x2e, r24	; 46
+ df4:	08 95       	ret
+
+00000df6 <TIMER_1_SET_DUTY_CYCLE>:
+*/
+
+
+void TIMER_1_SET_DUTY_CYCLE(uint8 Duty_Cycle)
+{
+	OCR1A = ((Duty_Cycle * 1250 ) /100 ) -1 ;
+ df6:	22 ee       	ldi	r18, 0xE2	; 226
+ df8:	34 e0       	ldi	r19, 0x04	; 4
+ dfa:	48 2f       	mov	r20, r24
+ dfc:	42 9f       	mul	r20, r18
+ dfe:	c0 01       	movw	r24, r0
+ e00:	43 9f       	mul	r20, r19
+ e02:	90 0d       	add	r25, r0
+ e04:	11 24       	eor	r1, r1
+ e06:	64 e6       	ldi	r22, 0x64	; 100
+ e08:	70 e0       	ldi	r23, 0x00	; 0
+ e0a:	0e 94 54 07 	call	0xea8	; 0xea8 <__divmodhi4>
+ e0e:	61 50       	subi	r22, 0x01	; 1
+ e10:	71 09       	sbc	r23, r1
+ e12:	7b bd       	out	0x2b, r23	; 43
+ e14:	6a bd       	out	0x2a, r22	; 42
+ e16:	08 95       	ret
+
+00000e18 <TIMER_2_INT_STATE>:
+	Function Arguments   : uint8 duty_cycle
+	Function Description : set duty_cycle value of pwm mode
+*/
+
+void TIMER_2_PWM_SET_DUTY_CYCLE(uint8 Duty_cycle)
+{
+ e18:	8f b7       	in	r24, 0x3f	; 63
+ e1a:	80 68       	ori	r24, 0x80	; 128
+ e1c:	8f bf       	out	0x3f, r24	; 63
+ e1e:	89 b7       	in	r24, 0x39	; 57
+ e20:	80 64       	ori	r24, 0x40	; 64
+ e22:	89 bf       	out	0x39, r24	; 57
+ e24:	08 95       	ret
+
+00000e26 <TIMER_2_INIT>:
+ e26:	85 b5       	in	r24, 0x25	; 37
+ e28:	87 7f       	andi	r24, 0xF7	; 247
+ e2a:	85 bd       	out	0x25, r24	; 37
+ e2c:	85 b5       	in	r24, 0x25	; 37
+ e2e:	8f 7b       	andi	r24, 0xBF	; 191
+ e30:	85 bd       	out	0x25, r24	; 37
+ e32:	0e 94 0c 07 	call	0xe18	; 0xe18 <TIMER_2_INT_STATE>
+ e36:	08 95       	ret
+
+00000e38 <TIMER_2_START>:
+ e38:	85 b5       	in	r24, 0x25	; 37
+ e3a:	81 60       	ori	r24, 0x01	; 1
+ e3c:	85 bd       	out	0x25, r24	; 37
+ e3e:	85 b5       	in	r24, 0x25	; 37
+ e40:	82 60       	ori	r24, 0x02	; 2
+ e42:	85 bd       	out	0x25, r24	; 37
+ e44:	85 b5       	in	r24, 0x25	; 37
+ e46:	84 60       	ori	r24, 0x04	; 4
+ e48:	85 bd       	out	0x25, r24	; 37
+ e4a:	08 95       	ret
+
+00000e4c <TIMER_2_INIT_SET_CALLBACK>:
+*/
+
+
+void TIMER_2_INIT_SET_CALLBACK( void (*COPY_FUNCTION) (void))
+{
+	CALLBACK_PTTR = COPY_FUNCTION;
+ e4c:	90 93 ca 00 	sts	0x00CA, r25	; 0x8000ca <CALLBACK_PTTR+0x1>
+ e50:	80 93 c9 00 	sts	0x00C9, r24	; 0x8000c9 <CALLBACK_PTTR>
+ e54:	08 95       	ret
+
+00000e56 <__vector_5>:
+}
+
+
+// inturrpt service routine of timer2 ovf
+ISR(TIMER2_OVF_vect)
+{
+ e56:	1f 92       	push	r1
+ e58:	0f 92       	push	r0
+ e5a:	0f b6       	in	r0, 0x3f	; 63
+ e5c:	0f 92       	push	r0
+ e5e:	11 24       	eor	r1, r1
+ e60:	2f 93       	push	r18
+ e62:	3f 93       	push	r19
+ e64:	4f 93       	push	r20
+ e66:	5f 93       	push	r21
+ e68:	6f 93       	push	r22
+ e6a:	7f 93       	push	r23
+ e6c:	8f 93       	push	r24
+ e6e:	9f 93       	push	r25
+ e70:	af 93       	push	r26
+ e72:	bf 93       	push	r27
+ e74:	ef 93       	push	r30
+ e76:	ff 93       	push	r31
+	if(CALLBACK_PTTR != 0)
+ e78:	e0 91 c9 00 	lds	r30, 0x00C9	; 0x8000c9 <CALLBACK_PTTR>
+ e7c:	f0 91 ca 00 	lds	r31, 0x00CA	; 0x8000ca <CALLBACK_PTTR+0x1>
+ e80:	30 97       	sbiw	r30, 0x00	; 0
+ e82:	09 f0       	breq	.+2      	; 0xe86 <__vector_5+0x30>
+	{
+		CALLBACK_PTTR();
+ e84:	09 95       	icall
+	}
+ e86:	ff 91       	pop	r31
+ e88:	ef 91       	pop	r30
+ e8a:	bf 91       	pop	r27
+ e8c:	af 91       	pop	r26
+ e8e:	9f 91       	pop	r25
+ e90:	8f 91       	pop	r24
+ e92:	7f 91       	pop	r23
+ e94:	6f 91       	pop	r22
+ e96:	5f 91       	pop	r21
+ e98:	4f 91       	pop	r20
+ e9a:	3f 91       	pop	r19
+ e9c:	2f 91       	pop	r18
+ e9e:	0f 90       	pop	r0
+ ea0:	0f be       	out	0x3f, r0	; 63
+ ea2:	0f 90       	pop	r0
+ ea4:	1f 90       	pop	r1
+ ea6:	18 95       	reti
+
+00000ea8 <__divmodhi4>:
+ ea8:	97 fb       	bst	r25, 7
+ eaa:	07 2e       	mov	r0, r23
+ eac:	16 f4       	brtc	.+4      	; 0xeb2 <__divmodhi4+0xa>
+ eae:	00 94       	com	r0
+ eb0:	07 d0       	rcall	.+14     	; 0xec0 <__divmodhi4_neg1>
+ eb2:	77 fd       	sbrc	r23, 7
+ eb4:	09 d0       	rcall	.+18     	; 0xec8 <__divmodhi4_neg2>
+ eb6:	0e 94 68 07 	call	0xed0	; 0xed0 <__udivmodhi4>
+ eba:	07 fc       	sbrc	r0, 7
+ ebc:	05 d0       	rcall	.+10     	; 0xec8 <__divmodhi4_neg2>
+ ebe:	3e f4       	brtc	.+14     	; 0xece <__divmodhi4_exit>
+
+00000ec0 <__divmodhi4_neg1>:
+ ec0:	90 95       	com	r25
+ ec2:	81 95       	neg	r24
+ ec4:	9f 4f       	sbci	r25, 0xFF	; 255
+ ec6:	08 95       	ret
+
+00000ec8 <__divmodhi4_neg2>:
+ ec8:	70 95       	com	r23
+ eca:	61 95       	neg	r22
+ ecc:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00000ece <__divmodhi4_exit>:
+ ece:	08 95       	ret
+
+00000ed0 <__udivmodhi4>:
+ ed0:	aa 1b       	sub	r26, r26
+ ed2:	bb 1b       	sub	r27, r27
+ ed4:	51 e1       	ldi	r21, 0x11	; 17
+ ed6:	07 c0       	rjmp	.+14     	; 0xee6 <__udivmodhi4_ep>
+
+00000ed8 <__udivmodhi4_loop>:
+ ed8:	aa 1f       	adc	r26, r26
+ eda:	bb 1f       	adc	r27, r27
+ edc:	a6 17       	cp	r26, r22
+ ede:	b7 07       	cpc	r27, r23
+ ee0:	10 f0       	brcs	.+4      	; 0xee6 <__udivmodhi4_ep>
+ ee2:	a6 1b       	sub	r26, r22
+ ee4:	b7 0b       	sbc	r27, r23
+
+00000ee6 <__udivmodhi4_ep>:
+ ee6:	88 1f       	adc	r24, r24
+ ee8:	99 1f       	adc	r25, r25
+ eea:	5a 95       	dec	r21
+ eec:	a9 f7       	brne	.-22     	; 0xed8 <__udivmodhi4_loop>
+ eee:	80 95       	com	r24
+ ef0:	90 95       	com	r25
+ ef2:	bc 01       	movw	r22, r24
+ ef4:	cd 01       	movw	r24, r26
+ ef6:	08 95       	ret
+
+00000ef8 <_exit>:
+ ef8:	f8 94       	cli
+
+00000efa <__stop_program>:
+ efa:	ff cf       	rjmp	.-2      	; 0xefa <__stop_program>

@@ -1,0 +1,31 @@
+HAL/SERVO/SERVO_MOTOR.d HAL/SERVO/SERVO_MOTOR.o: \
+ ../HAL/SERVO/SERVO_MOTOR.c ../HAL/SERVO/SERVO_MOTOR.h \
+ ../HAL/SERVO/SERVO_MOTOR_(CONFG).h \
+ ../HAL/SERVO/../../MCAL/TIMER_1/TIMER_1.h \
+ ../HAL/SERVO/../../MCAL/TIMER_1/../../LIB/Atmega32_Register.h \
+ ../HAL/SERVO/../../MCAL/TIMER_1/../../LIB/STD.h \
+ ../HAL/SERVO/../../MCAL/TIMER_1/../../LIB/BIT_Math.h \
+ ../HAL/SERVO/../../MCAL/TIMER_1/TIMER_1_CONFIGURATION.h \
+ ../HAL/SERVO/../../MCAL/DIO/DIO.h \
+ ../HAL/SERVO/../../MCAL/DIO/../../LIB/Atmega32_Register.h \
+ ../HAL/SERVO/../../MCAL/DIO/../../LIB/BIT_Math.h
+
+../HAL/SERVO/SERVO_MOTOR.h:
+
+../HAL/SERVO/SERVO_MOTOR_(CONFG).h:
+
+../HAL/SERVO/../../MCAL/TIMER_1/TIMER_1.h:
+
+../HAL/SERVO/../../MCAL/TIMER_1/../../LIB/Atmega32_Register.h:
+
+../HAL/SERVO/../../MCAL/TIMER_1/../../LIB/STD.h:
+
+../HAL/SERVO/../../MCAL/TIMER_1/../../LIB/BIT_Math.h:
+
+../HAL/SERVO/../../MCAL/TIMER_1/TIMER_1_CONFIGURATION.h:
+
+../HAL/SERVO/../../MCAL/DIO/DIO.h:
+
+../HAL/SERVO/../../MCAL/DIO/../../LIB/Atmega32_Register.h:
+
+../HAL/SERVO/../../MCAL/DIO/../../LIB/BIT_Math.h:

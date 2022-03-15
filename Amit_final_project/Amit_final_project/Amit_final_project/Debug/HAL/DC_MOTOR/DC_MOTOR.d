@@ -1,0 +1,19 @@
+HAL/DC_MOTOR/DC_MOTOR.d HAL/DC_MOTOR/DC_MOTOR.o: \
+ ../HAL/DC_MOTOR/DC_MOTOR.c ../HAL/DC_MOTOR/DC_MOTOR.h \
+ ../HAL/DC_MOTOR/../../MCAL/DIO/DIO.h \
+ ../HAL/DC_MOTOR/../../MCAL/DIO/../../LIB/Atmega32_Register.h \
+ ../HAL/DC_MOTOR/../../MCAL/DIO/../../LIB/STD.h \
+ ../HAL/DC_MOTOR/../../MCAL/DIO/../../LIB/BIT_Math.h \
+ ../HAL/DC_MOTOR/DC_MOTOR_CONFIGURATION.h
+
+../HAL/DC_MOTOR/DC_MOTOR.h:
+
+../HAL/DC_MOTOR/../../MCAL/DIO/DIO.h:
+
+../HAL/DC_MOTOR/../../MCAL/DIO/../../LIB/Atmega32_Register.h:
+
+../HAL/DC_MOTOR/../../MCAL/DIO/../../LIB/STD.h:
+
+../HAL/DC_MOTOR/../../MCAL/DIO/../../LIB/BIT_Math.h:
+
+../HAL/DC_MOTOR/DC_MOTOR_CONFIGURATION.h:
